@@ -81,7 +81,7 @@ type ShopData struct {
 	PrimaryImage        string            `bson:"primary_image" json:"primary_images" validate:"required,url"`
 	Address             *Address          `bson:"address" json:"address" validate:"required"`
 	Location            *Location         `bson:"location" json:"location" validate:"required"`
-	SectorNo            int64             `bson:"sector_no" json:"sector_no"`
+	SectorNo            int32             `bson:"sector_no" json:"sector_no"`
 	Category            []pb.Category     `bson:"category" json:"category" validate:"required"`
 	BusinessInformation string            `bson:"business_information" json:"business_information" validate:"required,max=500"`
 	OperationalHours    *OperationalHours `bson:"operational_hours" json:"operational_hours" validate:"required"`
