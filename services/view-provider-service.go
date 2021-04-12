@@ -112,14 +112,14 @@ func (viewServer *ViewProviderService) CreateShop(ctx context.Context, request *
 		return nil, err
 	}
 
-	array := structs.CashStructureProductArray{
-		Products: []string{},
-	}
-
-	err = viewServer.Cash.AddShopProductMapDataToCash(ctx, data.ShopId, array.Marshal())
-	if err != nil {
-		return nil, err
-	}
+	//array := structs.CashStructureProductArray{
+	//	Products: []string{},
+	//}
+	//
+	//err = viewServer.Cash.AddShopProductMapDataToCash(ctx, data.ShopId, array.Marshal())
+	//if err != nil {
+	//	return nil, err
+	//}
 
 	err = viewServer.Cash.AddShopInShopStream(ctx, marshalData)
 	if err != nil {
@@ -216,6 +216,10 @@ func (viewServer *ViewProviderService) AddProduct(ctx context.Context, request *
 	}
 
 	// Note Remember To Add Product To ShopProduct Map In Stream
+	err = viewServer.Cash.AddShopProductMapDataToCash(ctx, productData.ShopId, productData.ProductId.Hex())
+	if err != nil {
+		return nil, err
+	}
 
 	err = viewServer.Cash.AddProductInProductStream(ctx, marshalData)
 	if err != nil {

@@ -45,7 +45,7 @@ func (dataBase *CashDataBase) AddProductInProductStream(ctx context.Context, dat
 		MaxLen:       0,
 		MaxLenApprox: 0,
 		ID:           "",
-		Values:       []string{"shop", string(data), "operation", "+"},
+		Values:       []string{"product", string(data), "operation", "+"},
 	}).Err()
 	if err != nil {
 		return err
