@@ -1,10 +1,14 @@
 package main
 
 import (
+	"aapanavyapar-service-shopviewprovider/data-base/helpers"
+	"aapanavyapar-service-shopviewprovider/data-base/structs"
+	"aapanavyapar-service-shopviewprovider/pb"
 	"aapanavyapar-service-shopviewprovider/services"
 	"context"
 	"fmt"
 	_ "github.com/joho/godotenv/autoload"
+	"os"
 	"time"
 )
 
@@ -16,160 +20,177 @@ func main() {
 	service := services.NewViewProviderService(ctx)
 	fmt.Println(service)
 
-	err := service.Cash.AddShopProductMapDataToCash(ctx, "123", "10")
-	if err != nil {
-		panic(err)
-	}
-
-	err = service.Cash.AddShopProductMapDataToCash(ctx, "123", "11")
-	if err != nil {
-		panic(err)
-	}
-
-	err = service.Cash.AddShopProductMapDataToCash(ctx, "123", "12")
-	if err != nil {
-		panic(err)
-	}
-
-	ele, err := service.Cash.GetShopProductMapDataFromCash(ctx, "123")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("All Elements : ", ele)
-
-	pid, err := service.Cash.CheckIsProductBelongsToShopFromCash(ctx, "123", "12")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("Product Id : ", pid)
-
-	//_, err = service.Cash.CheckIsProductBelongsToShopFromCash(ctx, "123", "44")
-	//if err != nil {
-	//	panic(err)
-	//}
-
-	err = service.Cash.DelProductFromShopProductMapDataFromCash(ctx, "123", "12")
-	if err != nil {
-		panic(err)
-	}
-
-	ele, err = service.Cash.GetShopProductMapDataFromCash(ctx, "123")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("After Del Of 22 All Elements : ", ele)
-
-	err = service.Cash.DelProductFromShopProductMapDataFromCash(ctx, "123", "44")
-	if err != nil {
-		panic(err)
-	}
-
-	err = service.Cash.DelShopFromShopProductMapDataFromCash(ctx, "123")
-	if err != nil {
-		panic(err)
-	}
-
-	ele, err = service.Cash.GetShopProductMapDataFromCash(ctx, "123")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("All Elements : ", ele)
-
-	//shopData := structs.ShopData{
-	//	ShopId:         "9e3c578e-886b-4c5e-8375-b53d7e16266b",
-	//	ShopName:       "Testing Stores",
-	//	ShopKeeperName: "ABC Person",
-	//	Images:         []string{"https://store.com"},
-	//	PrimaryImage:   "https://www.primary.store.com",
-	//	Address: &structs.Address{
-	//		FullName:      "ABC Person",
-	//		HouseDetails:  "Testing Store",
-	//		StreetDetails: "Mustufa Chishti Colony Main Rd, Panchshil Nagar",
-	//		LandMark:      "Milap Store",
-	//		PinCode:       "425107",
-	//		City:          "chopda",
-	//		State:         "maharastra",
-	//		Country:       "india",
-	//		PhoneNo:       "9890713171",
-	//	},
-	//	Location: &structs.Location{
-	//		Longitude: "21.246435522726177",
-	//		Latitude:  "75.29615236552934",
-	//	},
-	//	Category:            []pb.Category{pb.Category_MENS_ACCESSORIES, pb.Category_WOMENS_CLOTHING},
-	//	BusinessInformation: "Famous Seller Of Cloths In Chopda",
-	//	OperationalHours: &structs.OperationalHours{
-	//		Sunday:    [2]string{"0AM", "0PM"},
-	//		Monday:    [2]string{"9AM", "9PM"},
-	//		Tuesday:   [2]string{"9AM", "9PM"},
-	//		Wednesday: [2]string{"9AM", "9PM"},
-	//		Thursday:  [2]string{"9AM", "9PM"},
-	//		Friday:    [2]string{"9AM", "9PM"},
-	//		Saturday:  [2]string{"9AM", "9PM"},
-	//	},
-	//	Ratings:   nil,
-	//	Timestamp: time.Now().UTC(),
-	//}
-	//
-	//token, _ := helpers.GenerateToken(os.Getenv("CREATE_SHOP_TOKEN_SECRETE"), shopData.ShopId, shopData.ShopName, "ef4c8553-208c-408d-b3f9-717ec5902473", true, []int{helpers.External})
-	//
-	//shopId, err := service.CreateShop(ctx, &pb.CreateShopRequest{
-	//	ApiKey:         os.Getenv("API_KEY_FOR_WEB"),
-	//	Token:          token,
-	//	ShopName:       shopData.ShopName,
-	//	ShopKeeperName: shopData.ShopKeeperName,
-	//	Images:         shopData.Images,
-	//	PrimaryImage:   shopData.PrimaryImage,
-	//	Address: &pb.Address{
-	//		FullName:      shopData.Address.FullName,
-	//		HouseDetails:  shopData.Address.HouseDetails,
-	//		StreetDetails: shopData.Address.StreetDetails,
-	//		LandMark:      shopData.Address.LandMark,
-	//		PinCode:       shopData.Address.PinCode,
-	//		City:          shopData.Address.City,
-	//		State:         shopData.Address.State,
-	//		Country:       shopData.Address.Country,
-	//		PhoneNo:       shopData.Address.PhoneNo,
-	//	},
-	//	Location: &pb.Location{
-	//		Longitude: shopData.Location.Longitude,
-	//		Latitude:  shopData.Location.Latitude,
-	//	},
-	//	Category:            shopData.Category,
-	//	BusinessInformation: shopData.BusinessInformation,
-	//	OperationalHours: &pb.OperationalHours{
-	//		Sunday:    []string{shopData.OperationalHours.Sunday[0], shopData.OperationalHours.Sunday[1]},
-	//		Monday:    []string{shopData.OperationalHours.Monday[0], shopData.OperationalHours.Monday[1]},
-	//		Tuesday:   []string{shopData.OperationalHours.Tuesday[0], shopData.OperationalHours.Tuesday[1]},
-	//		Wednesday: []string{shopData.OperationalHours.Wednesday[0], shopData.OperationalHours.Wednesday[1]},
-	//		Thursday:  []string{shopData.OperationalHours.Thursday[0], shopData.OperationalHours.Thursday[1]},
-	//		Friday:    []string{shopData.OperationalHours.Friday[0], shopData.OperationalHours.Friday[1]},
-	//		Saturday:  []string{shopData.OperationalHours.Saturday[0], shopData.OperationalHours.Saturday[1]},
-	//	},
-	//})
+	//err := service.Cash.AddShopProductMapDataToCash(ctx, "123", "10")
 	//if err != nil {
 	//	panic(err)
 	//}
 	//
-	//fmt.Println(shopId)
-
-	//dataProduct1 := structs.ProductData{
-	//	ShopId:           shopId,
-	//	Title:            "Yellow Shirt",
-	//	ShortDescription: "Best In Class Only",
-	//	Description:      "Cotton Fabric Size XL",
-	//	ShippingInfo:     "200x70x10",
-	//	Stock:            10,
-	//	Price:            100,
-	//	Offer:            10,
-	//	Category:         []constants.Categories{constants.MENS_CLOTHING},
-	//	Images:           []string{"https://image.com"},
-	//	Timestamp:        time.Now().UTC(),
-	//}
-	//productId1, err := service.Data.CreateProduct(ctx, dataProduct1)
+	//err = service.Cash.AddShopProductMapDataToCash(ctx, "123", "11")
 	//if err != nil {
 	//	panic(err)
 	//}
+	//
+	//err = service.Cash.AddShopProductMapDataToCash(ctx, "123", "12")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//ele, err := service.Cash.GetShopProductMapDataFromCash(ctx, "123")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//fmt.Println("All Elements : ", ele)
+	//
+	//pid, err := service.Cash.CheckIsProductBelongsToShopFromCash(ctx, "123", "12")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//fmt.Println("Product Id : ", pid)
+	//
+	////_, err = service.Cash.CheckIsProductBelongsToShopFromCash(ctx, "123", "44")
+	////if err != nil {
+	////	panic(err)
+	////}
+	//
+	//err = service.Cash.DelProductFromShopProductMapDataFromCash(ctx, "123", "12")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//ele, err = service.Cash.GetShopProductMapDataFromCash(ctx, "123")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//fmt.Println("After Del Of 22 All Elements : ", ele)
+	//
+	//err = service.Cash.DelProductFromShopProductMapDataFromCash(ctx, "123", "44")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//err = service.Cash.DelShopFromShopProductMapDataFromCash(ctx, "123")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//ele, err = service.Cash.GetShopProductMapDataFromCash(ctx, "123")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//fmt.Println("All Elements : ", ele)
+
+	shopData := structs.ShopData{
+		ShopId:         "9e3c578e-886b-4c5e-8375-b53d7e16266a",
+		ShopName:       "Testing Stores",
+		ShopKeeperName: "ABC Person",
+		Images:         []string{"https://store.com"},
+		PrimaryImage:   "https://www.primary.store.com",
+		Address: &structs.Address{
+			FullName:      "ABC Person",
+			HouseDetails:  "Testing Store",
+			StreetDetails: "Mustufa Chishti Colony Main Rd, Panchshil Nagar",
+			LandMark:      "Milap Store",
+			PinCode:       "425107",
+			City:          "chopda",
+			State:         "maharastra",
+			Country:       "india",
+			PhoneNo:       "9890713171",
+		},
+		Location: &structs.Location{
+			Longitude: "21.246435522726177",
+			Latitude:  "75.29615236552934",
+		},
+		Category:            []pb.Category{pb.Category_MENS_ACCESSORIES, pb.Category_WOMENS_CLOTHING},
+		BusinessInformation: "Famous Seller Of Cloths In Chopda",
+		OperationalHours: &structs.OperationalHours{
+			Sunday:    [2]string{"0AM", "0PM"},
+			Monday:    [2]string{"9AM", "9PM"},
+			Tuesday:   [2]string{"9AM", "9PM"},
+			Wednesday: [2]string{"9AM", "9PM"},
+			Thursday:  [2]string{"9AM", "9PM"},
+			Friday:    [2]string{"9AM", "9PM"},
+			Saturday:  [2]string{"9AM", "9PM"},
+		},
+		Ratings:   nil,
+		Timestamp: time.Now().UTC(),
+	}
+
+	token, _ := helpers.GenerateToken(os.Getenv("CREATE_SHOP_TOKEN_SECRETE"), shopData.ShopId, shopData.ShopName, "ef4c8553-208c-408d-b3f9-717ec5902473", true, []int{helpers.External})
+
+	status, err := service.CreateShop(ctx, &pb.CreateShopRequest{
+		ApiKey:         os.Getenv("API_KEY_FOR_WEB"),
+		Token:          token,
+		ShopName:       shopData.ShopName,
+		ShopKeeperName: shopData.ShopKeeperName,
+		Images:         shopData.Images,
+		PrimaryImage:   shopData.PrimaryImage,
+		Address: &pb.Address{
+			FullName:      shopData.Address.FullName,
+			HouseDetails:  shopData.Address.HouseDetails,
+			StreetDetails: shopData.Address.StreetDetails,
+			LandMark:      shopData.Address.LandMark,
+			PinCode:       shopData.Address.PinCode,
+			City:          shopData.Address.City,
+			State:         shopData.Address.State,
+			Country:       shopData.Address.Country,
+			PhoneNo:       shopData.Address.PhoneNo,
+		},
+		Location: &pb.Location{
+			Longitude: shopData.Location.Longitude,
+			Latitude:  shopData.Location.Latitude,
+		},
+		Category:            shopData.Category,
+		BusinessInformation: shopData.BusinessInformation,
+		OperationalHours: &pb.OperationalHours{
+			Sunday:    []string{shopData.OperationalHours.Sunday[0], shopData.OperationalHours.Sunday[1]},
+			Monday:    []string{shopData.OperationalHours.Monday[0], shopData.OperationalHours.Monday[1]},
+			Tuesday:   []string{shopData.OperationalHours.Tuesday[0], shopData.OperationalHours.Tuesday[1]},
+			Wednesday: []string{shopData.OperationalHours.Wednesday[0], shopData.OperationalHours.Wednesday[1]},
+			Thursday:  []string{shopData.OperationalHours.Thursday[0], shopData.OperationalHours.Thursday[1]},
+			Friday:    []string{shopData.OperationalHours.Friday[0], shopData.OperationalHours.Friday[1]},
+			Saturday:  []string{shopData.OperationalHours.Saturday[0], shopData.OperationalHours.Saturday[1]},
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(status)
+
+	dataProduct1 := structs.ProductData{
+		ShopId:           shopData.ShopId,
+		Title:            "Yellow Shirt",
+		ShortDescription: "Best In Class Only",
+		Description:      "Cotton Fabric Size XL",
+		ShippingInfo:     "200x70x10",
+		Stock:            10,
+		Price:            100,
+		Offer:            10,
+		Category:         []pb.Category{pb.Category_MENS_CLOTHING},
+		Images:           []string{"https://image.com"},
+		Timestamp:        time.Now().UTC(),
+	}
+
+	tokenAddProduct, _ := helpers.GenerateToken(os.Getenv("AUTH_SHOP_TOKEN_SECRETE"), shopData.ShopId, shopData.ShopName, "ef4c8553-208c-408d-b3f9-717ec5902473", true, []int{helpers.External})
+
+	statusProd, err := service.AddProduct(ctx, &pb.AddProductRequest{
+		Token:            tokenAddProduct,
+		ApiKey:           os.Getenv("API_KEY_FOR_WEB"),
+		Title:            dataProduct1.Title,
+		ShortDescription: dataProduct1.ShortDescription,
+		Description:      dataProduct1.Description,
+		ShippingInfo:     dataProduct1.ShippingInfo,
+		Stock:            dataProduct1.Stock,
+		Price:            dataProduct1.Price,
+		Offer:            dataProduct1.Offer,
+		Images:           dataProduct1.Images,
+		Category:         dataProduct1.Category,
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(statusProd)
+
 	//
 	//
 	//data, err := service.GetTrendingCategories(ctx, &pb.GetTrendingCategoriesRequest{

@@ -201,6 +201,7 @@ func (viewServer *ViewProviderService) AddProduct(ctx context.Context, request *
 		Offer:            request.GetOffer(),
 		Images:           request.GetImages(),
 		Category:         request.GetCategory(),
+		Timestamp:        time.Now().UTC(),
 	}
 
 	id, err := viewServer.Data.CreateProduct(ctx, productData)
