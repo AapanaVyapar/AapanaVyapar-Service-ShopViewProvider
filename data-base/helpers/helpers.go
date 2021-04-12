@@ -151,3 +151,36 @@ func GenerateAuthToken(userId string, userName string, refreshTokenId string, au
 	}
 	return token, nil
 }
+
+func GenerateToken(secrete string, shopId string, shopName string, refreshTokenId string, authorized bool, accessGroup []int) (string, error) {
+
+	now := time.Now()
+	var exp time.Time
+	if authorized {
+		exp = now.Add(AuthTokenExpiry)
+	} else {
+		exp = now.Add(AuthTokenExpiryForUnAuthorized)
+	}
+	nbt := now
+
+	jsonToken := paseto.JSONToken{
+		Audience:   shopId,
+		Jti:        refreshTokenId,
+		Subject:    shopName,
+		Issuer:     os.Getenv("TOKEN_ISSUER"),
+		IssuedAt:   now,
+		Expiration: exp,
+		NotBefore:  nbt,
+	}
+	jsonToken.Set("authorized", authorized)
+	jsonToken.Set("accessGroup", accessGroup)
+	footer := "Powered By AapanaVypar"
+
+	// Encrypt data
+	token, err := paseto.Encrypt([]byte(secrete), jsonToken, footer)
+
+	if err != nil {
+		return "", err
+	}
+	return token, nil
+}

@@ -9,4 +9,4 @@ services:
       - "6388:6379"
     environment:
       - REDIS_REPLICATION_MODE=master
-    container_name: redis_cash
+    container_name: redis_cash_shop_view

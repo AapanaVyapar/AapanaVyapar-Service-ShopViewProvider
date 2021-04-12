@@ -11,6 +11,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"os"
+	"time"
 )
 
 type ViewProviderService struct {
@@ -38,6 +39,16 @@ func NewViewProviderService(ctx context.Context) *ViewProviderService {
 	}
 
 	err = view.LoadProductsInCash(ctx)
+	if err != nil {
+		panic(err)
+	}
+
+	err = view.InitShopStream(ctx)
+	if err != nil {
+		panic(err)
+	}
+
+	err = view.InitProductStream(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -87,6 +98,7 @@ func (viewServer *ViewProviderService) CreateShop(ctx context.Context, request *
 			Friday:    [2]string{request.GetOperationalHours().GetFriday()[0], request.GetOperationalHours().GetFriday()[1]},
 			Saturday:  [2]string{request.GetOperationalHours().GetSaturday()[0], request.GetOperationalHours().GetSaturday()[1]},
 		},
+		Timestamp: time.Now().UTC(),
 	}
 	_, err = viewServer.Data.CreateShop(ctx, &data)
 	if err != nil {
