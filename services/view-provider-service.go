@@ -209,6 +209,7 @@ func (viewServer *ViewProviderService) AddProduct(ctx context.Context, request *
 		return nil, status.Errorf(codes.Unknown, "Unable To Add Product")
 	}
 
+	productData.ProductId = id
 	marshalData := productData.Marshal()
 
 	err = viewServer.Cash.AddProductDataToCash(ctx, id.Hex(), marshalData)
