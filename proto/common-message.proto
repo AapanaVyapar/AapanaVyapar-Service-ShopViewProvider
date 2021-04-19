@@ -44,6 +44,7 @@ enum Category{
   TOYS = 9;
   ELECTRONIC = 10;
   DECORATION = 11;
+  FOOD = 12;
 
 }
 
