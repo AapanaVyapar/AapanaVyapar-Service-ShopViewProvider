@@ -32,7 +32,7 @@ var file_view_provider_service_proto_rawDesc = []byte{
 	0x1a, 0x14, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x2d, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x2d, 0x64,
 	0x65, 0x6c, 0x65, 0x74, 0x65, 0x2d, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2e, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x32, 0xbe, 0x06, 0x0a, 0x13, 0x56, 0x69, 0x65, 0x77, 0x50, 0x72, 0x6f, 0x76,
+	0x6f, 0x74, 0x6f, 0x32, 0xf4, 0x06, 0x0a, 0x13, 0x56, 0x69, 0x65, 0x77, 0x50, 0x72, 0x6f, 0x76,
 	0x69, 0x64, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x35, 0x0a, 0x0a, 0x43,
 	0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x68, 0x6f, 0x70, 0x12, 0x12, 0x2e, 0x43, 0x72, 0x65, 0x61,
 	0x74, 0x65, 0x53, 0x68, 0x6f, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x13, 0x2e,
@@ -84,10 +84,14 @@ var file_view_provider_service_proto_rawDesc = []byte{
 	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x48, 0x6f, 0x75, 0x72, 0x73, 0x52, 0x65, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x70, 0x65, 0x72,
 	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x48, 0x6f, 0x75, 0x72, 0x73, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x42, 0x30, 0x0a, 0x26, 0x63, 0x6f, 0x6d, 0x2e, 0x61, 0x61, 0x70, 0x61,
-	0x6e, 0x61, 0x76, 0x79, 0x61, 0x70, 0x61, 0x72, 0x2e, 0x61, 0x61, 0x70, 0x61, 0x6e, 0x61, 0x76,
-	0x79, 0x61, 0x70, 0x61, 0x72, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x50, 0x01,
-	0x5a, 0x04, 0x2e, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x34, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72,
+	0x73, 0x12, 0x11, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x73,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x42, 0x30, 0x0a, 0x26, 0x63, 0x6f,
+	0x6d, 0x2e, 0x61, 0x61, 0x70, 0x61, 0x6e, 0x61, 0x76, 0x79, 0x61, 0x70, 0x61, 0x72, 0x2e, 0x61,
+	0x61, 0x70, 0x61, 0x6e, 0x61, 0x76, 0x79, 0x61, 0x70, 0x61, 0x72, 0x2e, 0x73, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x73, 0x50, 0x01, 0x5a, 0x04, 0x2e, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var file_view_provider_service_proto_goTypes = []interface{}{
@@ -102,17 +106,19 @@ var file_view_provider_service_proto_goTypes = []interface{}{
 	(*UpdateCategoryRequest)(nil),                // 8: UpdateCategoryRequest
 	(*UpdateBusinessInfoRequest)(nil),            // 9: UpdateBusinessInfoRequest
 	(*UpdateOperationalHoursRequest)(nil),        // 10: UpdateOperationalHoursRequest
-	(*CreateShopResponse)(nil),                   // 11: CreateShopResponse
-	(*DeleteShopResponse)(nil),                   // 12: DeleteShopResponse
-	(*AddProductResponse)(nil),                   // 13: AddProductResponse
-	(*DelProductResponse)(nil),                   // 14: DelProductResponse
-	(*GetShopDetailsResponse)(nil),               // 15: GetShopDetailsResponse
-	(*UpdateShopPrimaryImageResponse)(nil),       // 16: UpdateShopPrimaryImageResponse
-	(*UpdateShopKeeperNameResponse)(nil),         // 17: UpdateShopKeeperNameResponse
-	(*UpdateShopAddressAndLocationResponse)(nil), // 18: UpdateShopAddressAndLocationResponse
-	(*UpdateCategoryResponse)(nil),               // 19: UpdateCategoryResponse
-	(*UpdateBusinessInfoResponse)(nil),           // 20: UpdateBusinessInfoResponse
-	(*UpdateOperationalHoursResponse)(nil),       // 21: UpdateOperationalHoursResponse
+	(*GetOrdersRequest)(nil),                     // 11: GetOrdersRequest
+	(*CreateShopResponse)(nil),                   // 12: CreateShopResponse
+	(*DeleteShopResponse)(nil),                   // 13: DeleteShopResponse
+	(*AddProductResponse)(nil),                   // 14: AddProductResponse
+	(*DelProductResponse)(nil),                   // 15: DelProductResponse
+	(*GetShopDetailsResponse)(nil),               // 16: GetShopDetailsResponse
+	(*UpdateShopPrimaryImageResponse)(nil),       // 17: UpdateShopPrimaryImageResponse
+	(*UpdateShopKeeperNameResponse)(nil),         // 18: UpdateShopKeeperNameResponse
+	(*UpdateShopAddressAndLocationResponse)(nil), // 19: UpdateShopAddressAndLocationResponse
+	(*UpdateCategoryResponse)(nil),               // 20: UpdateCategoryResponse
+	(*UpdateBusinessInfoResponse)(nil),           // 21: UpdateBusinessInfoResponse
+	(*UpdateOperationalHoursResponse)(nil),       // 22: UpdateOperationalHoursResponse
+	(*GetOrdersResponse)(nil),                    // 23: GetOrdersResponse
 }
 var file_view_provider_service_proto_depIdxs = []int32{
 	0,  // 0: ViewProviderService.CreateShop:input_type -> CreateShopRequest
@@ -126,19 +132,21 @@ var file_view_provider_service_proto_depIdxs = []int32{
 	8,  // 8: ViewProviderService.UpdateCategory:input_type -> UpdateCategoryRequest
 	9,  // 9: ViewProviderService.UpdateBusinessInfo:input_type -> UpdateBusinessInfoRequest
 	10, // 10: ViewProviderService.UpdateOperationalHours:input_type -> UpdateOperationalHoursRequest
-	11, // 11: ViewProviderService.CreateShop:output_type -> CreateShopResponse
-	12, // 12: ViewProviderService.DeleteShop:output_type -> DeleteShopResponse
-	13, // 13: ViewProviderService.AddProduct:output_type -> AddProductResponse
-	14, // 14: ViewProviderService.DelProduct:output_type -> DelProductResponse
-	15, // 15: ViewProviderService.GetShopDetails:output_type -> GetShopDetailsResponse
-	16, // 16: ViewProviderService.UpdateShopPrimaryImage:output_type -> UpdateShopPrimaryImageResponse
-	17, // 17: ViewProviderService.UpdateShopKeeperName:output_type -> UpdateShopKeeperNameResponse
-	18, // 18: ViewProviderService.UpdateShopAddressAndLocation:output_type -> UpdateShopAddressAndLocationResponse
-	19, // 19: ViewProviderService.UpdateCategory:output_type -> UpdateCategoryResponse
-	20, // 20: ViewProviderService.UpdateBusinessInfo:output_type -> UpdateBusinessInfoResponse
-	21, // 21: ViewProviderService.UpdateOperationalHours:output_type -> UpdateOperationalHoursResponse
-	11, // [11:22] is the sub-list for method output_type
-	0,  // [0:11] is the sub-list for method input_type
+	11, // 11: ViewProviderService.GetOrders:input_type -> GetOrdersRequest
+	12, // 12: ViewProviderService.CreateShop:output_type -> CreateShopResponse
+	13, // 13: ViewProviderService.DeleteShop:output_type -> DeleteShopResponse
+	14, // 14: ViewProviderService.AddProduct:output_type -> AddProductResponse
+	15, // 15: ViewProviderService.DelProduct:output_type -> DelProductResponse
+	16, // 16: ViewProviderService.GetShopDetails:output_type -> GetShopDetailsResponse
+	17, // 17: ViewProviderService.UpdateShopPrimaryImage:output_type -> UpdateShopPrimaryImageResponse
+	18, // 18: ViewProviderService.UpdateShopKeeperName:output_type -> UpdateShopKeeperNameResponse
+	19, // 19: ViewProviderService.UpdateShopAddressAndLocation:output_type -> UpdateShopAddressAndLocationResponse
+	20, // 20: ViewProviderService.UpdateCategory:output_type -> UpdateCategoryResponse
+	21, // 21: ViewProviderService.UpdateBusinessInfo:output_type -> UpdateBusinessInfoResponse
+	22, // 22: ViewProviderService.UpdateOperationalHours:output_type -> UpdateOperationalHoursResponse
+	23, // 23: ViewProviderService.GetOrders:output_type -> GetOrdersResponse
+	12, // [12:24] is the sub-list for method output_type
+	0,  // [0:12] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -194,6 +202,7 @@ type ViewProviderServiceClient interface {
 	UpdateCategory(ctx context.Context, in *UpdateCategoryRequest, opts ...grpc.CallOption) (*UpdateCategoryResponse, error)
 	UpdateBusinessInfo(ctx context.Context, in *UpdateBusinessInfoRequest, opts ...grpc.CallOption) (*UpdateBusinessInfoResponse, error)
 	UpdateOperationalHours(ctx context.Context, in *UpdateOperationalHoursRequest, opts ...grpc.CallOption) (*UpdateOperationalHoursResponse, error)
+	GetOrders(ctx context.Context, in *GetOrdersRequest, opts ...grpc.CallOption) (ViewProviderService_GetOrdersClient, error)
 }
 
 type viewProviderServiceClient struct {
@@ -303,6 +312,38 @@ func (c *viewProviderServiceClient) UpdateOperationalHours(ctx context.Context, 
 	return out, nil
 }
 
+func (c *viewProviderServiceClient) GetOrders(ctx context.Context, in *GetOrdersRequest, opts ...grpc.CallOption) (ViewProviderService_GetOrdersClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_ViewProviderService_serviceDesc.Streams[0], "/ViewProviderService/GetOrders", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &viewProviderServiceGetOrdersClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ViewProviderService_GetOrdersClient interface {
+	Recv() (*GetOrdersResponse, error)
+	grpc.ClientStream
+}
+
+type viewProviderServiceGetOrdersClient struct {
+	grpc.ClientStream
+}
+
+func (x *viewProviderServiceGetOrdersClient) Recv() (*GetOrdersResponse, error) {
+	m := new(GetOrdersResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // ViewProviderServiceServer is the server API for ViewProviderService service.
 type ViewProviderServiceServer interface {
 	CreateShop(context.Context, *CreateShopRequest) (*CreateShopResponse, error)
@@ -316,6 +357,7 @@ type ViewProviderServiceServer interface {
 	UpdateCategory(context.Context, *UpdateCategoryRequest) (*UpdateCategoryResponse, error)
 	UpdateBusinessInfo(context.Context, *UpdateBusinessInfoRequest) (*UpdateBusinessInfoResponse, error)
 	UpdateOperationalHours(context.Context, *UpdateOperationalHoursRequest) (*UpdateOperationalHoursResponse, error)
+	GetOrders(*GetOrdersRequest, ViewProviderService_GetOrdersServer) error
 }
 
 // UnimplementedViewProviderServiceServer can be embedded to have forward compatible implementations.
@@ -354,6 +396,9 @@ func (*UnimplementedViewProviderServiceServer) UpdateBusinessInfo(context.Contex
 }
 func (*UnimplementedViewProviderServiceServer) UpdateOperationalHours(context.Context, *UpdateOperationalHoursRequest) (*UpdateOperationalHoursResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateOperationalHours not implemented")
+}
+func (*UnimplementedViewProviderServiceServer) GetOrders(*GetOrdersRequest, ViewProviderService_GetOrdersServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetOrders not implemented")
 }
 
 func RegisterViewProviderServiceServer(s *grpc.Server, srv ViewProviderServiceServer) {
@@ -558,6 +603,27 @@ func _ViewProviderService_UpdateOperationalHours_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ViewProviderService_GetOrders_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GetOrdersRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ViewProviderServiceServer).GetOrders(m, &viewProviderServiceGetOrdersServer{stream})
+}
+
+type ViewProviderService_GetOrdersServer interface {
+	Send(*GetOrdersResponse) error
+	grpc.ServerStream
+}
+
+type viewProviderServiceGetOrdersServer struct {
+	grpc.ServerStream
+}
+
+func (x *viewProviderServiceGetOrdersServer) Send(m *GetOrdersResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 var _ViewProviderService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "ViewProviderService",
 	HandlerType: (*ViewProviderServiceServer)(nil),
@@ -607,6 +673,12 @@ var _ViewProviderService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _ViewProviderService_UpdateOperationalHours_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "GetOrders",
+			Handler:       _ViewProviderService_GetOrders_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "view-provider-service.proto",
 }

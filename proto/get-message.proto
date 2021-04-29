@@ -4,6 +4,8 @@ option go_package = ".;pb";
 option java_multiple_files = true;
 option java_package = "com.aapanavyapar.aapanavyapar.services";
 
+import "common-message.proto";
+
 message GetShopDetailsRequest {
 
 }
@@ -11,3 +13,23 @@ message GetShopDetailsRequest {
 message GetShopDetailsResponse {
 
 }
+
+message GetOrdersRequest {
+  string ApiKey = 49;
+  string Token = 50;
+
+}
+
+message GetOrdersResponse {
+  string orderId = 51;
+  Status status = 52;
+  string productId = 53;
+  string deliveryTimeStamp = 54;
+  string orderTimeStamp = 55;
+  float price = 56;
+  uint32 quantity = 57;
+  string productName = 58;
+  string productImage = 59;
+  Address address = 60;
+}
+

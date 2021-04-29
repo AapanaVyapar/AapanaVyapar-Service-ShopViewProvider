@@ -56,6 +56,54 @@ func NewViewProviderService(ctx context.Context) *ViewProviderService {
 	return &view
 }
 
+func (viewServer *ViewProviderService) GetOrders(request *pb.GetOrdersRequest, stream pb.ViewProviderService_GetOrdersServer) error {
+	if !helpers.CheckForAPIKey(request.GetApiKey()) {
+		return status.Errorf(codes.Unauthenticated, "No API Key Is Specified")
+	}
+
+	receivedToken, err := helpers.ValidateToken(stream.Context(), request.GetToken(), os.Getenv("CREATE_SHOP_TOKEN_SECRETE"), helpers.External)
+	if err != nil {
+		return status.Errorf(codes.Unauthenticated, "Request With Invalid Token")
+	}
+
+	err = viewServer.Data.GetOrderInfoByShopIdFromOrderData(stream.Context(), receivedToken.Audience, func(data structs.OrderData) error {
+
+		err = stream.Send(&pb.GetOrdersResponse{
+			OrderId:           data.OrderId.Hex(),
+			Status:            data.Status,
+			ProductId:         data.ProductId.Hex(),
+			DeliveryTimeStamp: data.DeliveryTimeStamp.UTC().String(),
+			OrderTimeStamp:    data.OrderTimeStamp.UTC().String(),
+			Price:             data.Price,
+			Quantity:          data.Quantity,
+			ProductName:       data.ProductName,
+			ProductImage:      data.ProductImage,
+			Address: &pb.Address{
+				FullName:      data.Address.FullName,
+				HouseDetails:  data.Address.HouseDetails,
+				StreetDetails: data.Address.StreetDetails,
+				LandMark:      data.Address.LandMark,
+				PinCode:       data.Address.PinCode,
+				City:          data.Address.City,
+				State:         data.Address.State,
+				Country:       data.Address.Country,
+				PhoneNo:       data.Address.PhoneNo,
+			},
+		})
+		if err != nil {
+			return status.Errorf(codes.Unknown, "Stream Error")
+		}
+
+		return nil
+	})
+	if err != nil {
+		return status.Errorf(codes.Unknown, "Unable To Get Orders")
+	}
+
+	return nil
+
+}
+
 func (viewServer *ViewProviderService) CreateShop(ctx context.Context, request *pb.CreateShopRequest) (*pb.CreateShopResponse, error) {
 	if !helpers.CheckForAPIKey(request.GetApiKey()) {
 		return nil, status.Errorf(codes.Unauthenticated, "No API Key Is Specified")
