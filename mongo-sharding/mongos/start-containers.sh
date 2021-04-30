@@ -1,4 +1,4 @@
-docker-compose -f /home/shitij/go/src/aapanavyapar-service-viewprovider/sharding/mongos/docker-compose.yaml up -d
+docker-compose -f /home/shitij/go/src/aapanavyapar-service-shopviewprovider/mongo-sharding/mongos/docker-compose.yaml up -d
 
 sleep 35
 
