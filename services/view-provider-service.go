@@ -238,18 +238,17 @@ func (viewServer *ViewProviderService) AddProduct(ctx context.Context, request *
 	}
 
 	productData := structs.ProductData{
-		ShopId:           receivedToken.Audience,
-		ShopName:         receivedToken.Subject,
-		Title:            request.GetTitle(),
-		ShortDescription: request.GetShortDescription(),
-		Description:      request.GetDescription(),
-		ShippingInfo:     request.GetShippingInfo(),
-		Stock:            request.GetStock(),
-		Price:            request.GetPrice(),
-		Offer:            request.GetOffer(),
-		Images:           request.GetImages(),
-		Category:         request.GetCategory(),
-		Timestamp:        time.Now().UTC(),
+		ShopId:       receivedToken.Audience,
+		ShopName:     receivedToken.Subject,
+		Title:        request.GetTitle(),
+		Description:  request.GetDescription(),
+		ShippingInfo: request.GetShippingInfo(),
+		Stock:        request.GetStock(),
+		Price:        request.GetPrice(),
+		Offer:        request.GetOffer(),
+		Images:       request.GetImages(),
+		Category:     request.GetCategory(),
+		Timestamp:    time.Now().UTC(),
 	}
 
 	id, err := viewServer.Data.CreateProduct(ctx, productData)
