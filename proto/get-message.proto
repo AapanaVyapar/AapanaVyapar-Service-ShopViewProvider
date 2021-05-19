@@ -4,20 +4,30 @@ option go_package = ".;pb";
 option java_multiple_files = true;
 option java_package = "com.aapanavyapar.aapanavyapar.services";
 
-import "common-message.proto";
+import "shop-view-common-message.proto";
 
 message GetShopDetailsRequest {
-
+  string ApiKey = 61;
+  string Token = 62;
 }
 
 message GetShopDetailsResponse {
-
+  string ShopName = 63;
+  string ShopKeeperName = 64;
+  repeated string Images = 65;
+  string PrimaryImage = 66;
+  Address Address = 67;
+  Location Location = 68;
+  repeated Category Category = 69;
+  string BusinessInformation = 70;
+  OperationalHours OperationalHours = 71;
+  repeated RatingOfShop ratings = 72;
+  string timestamp = 73;
 }
 
 message GetOrdersRequest {
   string ApiKey = 49;
   string Token = 50;
-
 }
 
 message GetOrdersResponse {

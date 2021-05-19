@@ -16,6 +16,14 @@ message Address {
   string PhoneNo = 9;
 }
 
+message RatingOfShop {
+  string UserName = 67;
+  string Comment = 68;
+  Ratings Rating = 69;
+  string timestamp = 70;
+
+}
+
 message Location {
   string Longitude = 10;
   string Latitude = 11;
@@ -60,7 +68,7 @@ enum Category{
 enum Ratings {
   VERY_BAD = 0;
   BAD = 1;
-  OK = 2;
+  OKAY = 2;
   GOOD = 3;
   VERY_GOOD = 4;
 

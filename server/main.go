@@ -115,15 +115,14 @@ func main() {
 		Timestamp: time.Now().UTC(),
 	}
 
-	token, _ := helpers.GenerateToken(os.Getenv("CREATE_SHOP_TOKEN_SECRETE"), shopData.ShopId, shopData.ShopName, "ef4c8553-208c-408d-b3f9-717ec5902473", true, []int{helpers.External})
+	token, _ := helpers.GenerateToken(os.Getenv("CREATE_SHOP_TOKEN_SECRETE"), shopData.ShopId, shopData.ShopKeeperName, "ef4c8553-208c-408d-b3f9-717ec5902473", true, []int{helpers.External})
 
 	status, err := service.CreateShop(ctx, &pb.CreateShopRequest{
-		ApiKey:         os.Getenv("API_KEY_FOR_WEB"),
-		Token:          token,
-		ShopName:       shopData.ShopName,
-		ShopKeeperName: shopData.ShopKeeperName,
-		Images:         shopData.Images,
-		PrimaryImage:   shopData.PrimaryImage,
+		ApiKey:       os.Getenv("API_KEY_FOR_WEB"),
+		Token:        token,
+		ShopName:     shopData.ShopName,
+		Images:       shopData.Images,
+		PrimaryImage: shopData.PrimaryImage,
 		Address: &pb.Address{
 			FullName:      shopData.Address.FullName,
 			HouseDetails:  shopData.Address.HouseDetails,
@@ -158,33 +157,31 @@ func main() {
 	fmt.Println(status)
 
 	dataProduct1 := structs.ProductData{
-		ShopId:           shopData.ShopId,
-		Title:            "Yellow Shirt",
-		ShortDescription: "Best In Class Only",
-		Description:      "Cotton Fabric Size XL",
-		ShippingInfo:     "200x70x10",
-		Stock:            10,
-		Price:            100,
-		Offer:            10,
-		Category:         []pb.Category{pb.Category_MENS_CLOTHING},
-		Images:           []string{"https://image.com"},
-		Timestamp:        time.Now().UTC(),
+		ShopId:       shopData.ShopId,
+		Title:        "Yellow Shirt",
+		Description:  "Cotton Fabric Size XL",
+		ShippingInfo: "200x70x10",
+		Stock:        10,
+		Price:        100,
+		Offer:        10,
+		Category:     []pb.Category{pb.Category_MENS_CLOTHING},
+		Images:       []string{"https://image.com"},
+		Timestamp:    time.Now().UTC(),
 	}
 
-	tokenAddProduct, _ := helpers.GenerateToken(os.Getenv("AUTH_SHOP_TOKEN_SECRETE"), shopData.ShopId, shopData.ShopName, "ef4c8553-208c-408d-b3f9-717ec5902473", true, []int{helpers.External})
+	tokenAddProduct, _ := helpers.GenerateToken(os.Getenv("AUTH_SHOP_TOKEN_SECRETE"), shopData.ShopId, shopData.ShopKeeperName, "ef4c8553-208c-408d-b3f9-717ec5902473", true, []int{helpers.External})
 
 	statusProd, err := service.AddProduct(ctx, &pb.AddProductRequest{
-		Token:            tokenAddProduct,
-		ApiKey:           os.Getenv("API_KEY_FOR_WEB"),
-		Title:            dataProduct1.Title,
-		ShortDescription: dataProduct1.ShortDescription,
-		Description:      dataProduct1.Description,
-		ShippingInfo:     dataProduct1.ShippingInfo,
-		Stock:            dataProduct1.Stock,
-		Price:            dataProduct1.Price,
-		Offer:            dataProduct1.Offer,
-		Images:           dataProduct1.Images,
-		Category:         dataProduct1.Category,
+		Token:        tokenAddProduct,
+		ApiKey:       os.Getenv("API_KEY_FOR_WEB"),
+		Title:        dataProduct1.Title,
+		Description:  dataProduct1.Description,
+		ShippingInfo: dataProduct1.ShippingInfo,
+		Stock:        dataProduct1.Stock,
+		Price:        dataProduct1.Price,
+		Offer:        dataProduct1.Offer,
+		Images:       dataProduct1.Images,
+		Category:     dataProduct1.Category,
 	})
 	if err != nil {
 		panic(err)

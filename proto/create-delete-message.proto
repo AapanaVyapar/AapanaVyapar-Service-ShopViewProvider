@@ -4,13 +4,12 @@ option go_package = ".;pb";
 option java_multiple_files = true;
 option java_package = "com.aapanavyapar.aapanavyapar.services";
 
-import "common-message.proto";
+import "shop-view-common-message.proto";
 
 message CreateShopRequest {
   string ApiKey = 19;
   string Token = 48;
   string ShopName = 20;
-  string ShopKeeperName = 21;
   repeated string Images = 22;
   string PrimaryImage = 23;
   Address Address = 24;

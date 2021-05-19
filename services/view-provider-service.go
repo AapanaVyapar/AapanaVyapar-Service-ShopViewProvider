@@ -117,7 +117,7 @@ func (viewServer *ViewProviderService) CreateShop(ctx context.Context, request *
 	data := structs.ShopData{
 		ShopId:         receivedToken.Audience,
 		ShopName:       request.GetShopName(),
-		ShopKeeperName: request.GetShopKeeperName(),
+		ShopKeeperName: receivedToken.Subject,
 		Images:         request.GetImages(),
 		PrimaryImage:   request.GetPrimaryImage(),
 		Address: &structs.Address{
@@ -324,8 +324,68 @@ func (viewServer *ViewProviderService) DelProduct(ctx context.Context, request *
 }
 
 func (viewServer *ViewProviderService) GetShopDetails(ctx context.Context, request *pb.GetShopDetailsRequest) (*pb.GetShopDetailsResponse, error) {
-	return nil, nil
+	if !helpers.CheckForAPIKey(request.GetApiKey()) {
+		return nil, status.Errorf(codes.Unauthenticated, "No API Key Is Specified")
+	}
 
+	receivedToken, err := helpers.ValidateToken(ctx, request.GetToken(), os.Getenv("AUTH_SHOP_TOKEN_SECRETE"), helpers.External)
+	if err != nil {
+		return nil, status.Errorf(codes.Unauthenticated, "Request With Invalid Token")
+	}
+
+	shopBytes, err := viewServer.Cash.GetShopDataFromCash(ctx, receivedToken.Audience)
+	if err != nil {
+		return nil, status.Errorf(codes.NotFound, "Shop Not Found")
+	}
+
+	var shopData structs.ShopData
+	structs.UnmarshalShopData([]byte(shopBytes), &shopData)
+
+	var ratings []*pb.RatingOfShop
+	for _, rat := range *shopData.Ratings {
+		rating := pb.RatingOfShop{}
+		rating.UserName = rat.UserName
+		rating.Timestamp = rat.Timestamp.String()
+		rating.Comment = rat.Comment
+		rating.Rating = rat.Rating
+
+		ratings = append(ratings, &rating)
+	}
+
+	return &pb.GetShopDetailsResponse{
+		ShopName:       shopData.ShopName,
+		ShopKeeperName: shopData.ShopKeeperName,
+		Images:         shopData.Images,
+		PrimaryImage:   shopData.PrimaryImage,
+		Address: &pb.Address{
+			FullName:      shopData.Address.FullName,
+			HouseDetails:  shopData.Address.HouseDetails,
+			StreetDetails: shopData.Address.StreetDetails,
+			LandMark:      shopData.Address.LandMark,
+			PinCode:       shopData.Address.PinCode,
+			City:          shopData.Address.City,
+			State:         shopData.Address.State,
+			Country:       shopData.Address.Country,
+			PhoneNo:       shopData.Address.PhoneNo,
+		},
+		Location: &pb.Location{
+			Longitude: shopData.Location.Longitude,
+			Latitude:  shopData.Location.Latitude,
+		},
+		Category:            shopData.Category,
+		BusinessInformation: shopData.BusinessInformation,
+		OperationalHours: &pb.OperationalHours{
+			Sunday:    []string{shopData.OperationalHours.Sunday[0], shopData.OperationalHours.Sunday[1]},
+			Monday:    []string{shopData.OperationalHours.Monday[0], shopData.OperationalHours.Monday[1]},
+			Tuesday:   []string{shopData.OperationalHours.Tuesday[0], shopData.OperationalHours.Tuesday[1]},
+			Wednesday: []string{shopData.OperationalHours.Wednesday[0], shopData.OperationalHours.Wednesday[1]},
+			Thursday:  []string{shopData.OperationalHours.Thursday[0], shopData.OperationalHours.Thursday[1]},
+			Friday:    []string{shopData.OperationalHours.Friday[0], shopData.OperationalHours.Friday[1]},
+			Saturday:  []string{shopData.OperationalHours.Saturday[0], shopData.OperationalHours.Saturday[1]},
+		},
+		Ratings:   ratings,
+		Timestamp: shopData.Timestamp.String(),
+	}, nil
 }
 
 func (viewServer *ViewProviderService) UpdateShopPrimaryImage(ctx context.Context, request *pb.UpdateShopPrimaryImageRequest) (*pb.UpdateShopPrimaryImageResponse, error) {
