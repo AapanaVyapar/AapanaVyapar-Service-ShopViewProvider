@@ -32,7 +32,7 @@ var file_view_provider_service_proto_rawDesc = []byte{
 	0x1a, 0x14, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x2d, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x2d, 0x64,
 	0x65, 0x6c, 0x65, 0x74, 0x65, 0x2d, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2e, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x32, 0xf4, 0x06, 0x0a, 0x13, 0x56, 0x69, 0x65, 0x77, 0x50, 0x72, 0x6f, 0x76,
+	0x6f, 0x74, 0x6f, 0x32, 0xb0, 0x07, 0x0a, 0x13, 0x56, 0x69, 0x65, 0x77, 0x50, 0x72, 0x6f, 0x76,
 	0x69, 0x64, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x35, 0x0a, 0x0a, 0x43,
 	0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x68, 0x6f, 0x70, 0x12, 0x12, 0x2e, 0x43, 0x72, 0x65, 0x61,
 	0x74, 0x65, 0x53, 0x68, 0x6f, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x13, 0x2e,
@@ -87,11 +87,14 @@ var file_view_provider_service_proto_rawDesc = []byte{
 	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x34, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72,
 	0x73, 0x12, 0x11, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71,
 	0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x73,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x42, 0x30, 0x0a, 0x26, 0x63, 0x6f,
-	0x6d, 0x2e, 0x61, 0x61, 0x70, 0x61, 0x6e, 0x61, 0x76, 0x79, 0x61, 0x70, 0x61, 0x72, 0x2e, 0x61,
-	0x61, 0x70, 0x61, 0x6e, 0x61, 0x76, 0x79, 0x61, 0x70, 0x61, 0x72, 0x2e, 0x73, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x73, 0x50, 0x01, 0x5a, 0x04, 0x2e, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x12, 0x3a, 0x0a, 0x0b, 0x47, 0x65,
+	0x74, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x73, 0x12, 0x13, 0x2e, 0x47, 0x65, 0x74, 0x50,
+	0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14,
+	0x2e, 0x47, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x42, 0x30, 0x0a, 0x26, 0x63, 0x6f, 0x6d, 0x2e, 0x61, 0x61,
+	0x70, 0x61, 0x6e, 0x61, 0x76, 0x79, 0x61, 0x70, 0x61, 0x72, 0x2e, 0x61, 0x61, 0x70, 0x61, 0x6e,
+	0x61, 0x76, 0x79, 0x61, 0x70, 0x61, 0x72, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73,
+	0x50, 0x01, 0x5a, 0x04, 0x2e, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var file_view_provider_service_proto_goTypes = []interface{}{
@@ -107,18 +110,20 @@ var file_view_provider_service_proto_goTypes = []interface{}{
 	(*UpdateBusinessInfoRequest)(nil),            // 9: UpdateBusinessInfoRequest
 	(*UpdateOperationalHoursRequest)(nil),        // 10: UpdateOperationalHoursRequest
 	(*GetOrdersRequest)(nil),                     // 11: GetOrdersRequest
-	(*CreateShopResponse)(nil),                   // 12: CreateShopResponse
-	(*DeleteShopResponse)(nil),                   // 13: DeleteShopResponse
-	(*AddProductResponse)(nil),                   // 14: AddProductResponse
-	(*DelProductResponse)(nil),                   // 15: DelProductResponse
-	(*GetShopDetailsResponse)(nil),               // 16: GetShopDetailsResponse
-	(*UpdateShopPrimaryImageResponse)(nil),       // 17: UpdateShopPrimaryImageResponse
-	(*UpdateShopKeeperNameResponse)(nil),         // 18: UpdateShopKeeperNameResponse
-	(*UpdateShopAddressAndLocationResponse)(nil), // 19: UpdateShopAddressAndLocationResponse
-	(*UpdateCategoryResponse)(nil),               // 20: UpdateCategoryResponse
-	(*UpdateBusinessInfoResponse)(nil),           // 21: UpdateBusinessInfoResponse
-	(*UpdateOperationalHoursResponse)(nil),       // 22: UpdateOperationalHoursResponse
-	(*GetOrdersResponse)(nil),                    // 23: GetOrdersResponse
+	(*GetProductsRequest)(nil),                   // 12: GetProductsRequest
+	(*CreateShopResponse)(nil),                   // 13: CreateShopResponse
+	(*DeleteShopResponse)(nil),                   // 14: DeleteShopResponse
+	(*AddProductResponse)(nil),                   // 15: AddProductResponse
+	(*DelProductResponse)(nil),                   // 16: DelProductResponse
+	(*GetShopDetailsResponse)(nil),               // 17: GetShopDetailsResponse
+	(*UpdateShopPrimaryImageResponse)(nil),       // 18: UpdateShopPrimaryImageResponse
+	(*UpdateShopKeeperNameResponse)(nil),         // 19: UpdateShopKeeperNameResponse
+	(*UpdateShopAddressAndLocationResponse)(nil), // 20: UpdateShopAddressAndLocationResponse
+	(*UpdateCategoryResponse)(nil),               // 21: UpdateCategoryResponse
+	(*UpdateBusinessInfoResponse)(nil),           // 22: UpdateBusinessInfoResponse
+	(*UpdateOperationalHoursResponse)(nil),       // 23: UpdateOperationalHoursResponse
+	(*GetOrdersResponse)(nil),                    // 24: GetOrdersResponse
+	(*GetProductsResponse)(nil),                  // 25: GetProductsResponse
 }
 var file_view_provider_service_proto_depIdxs = []int32{
 	0,  // 0: ViewProviderService.CreateShop:input_type -> CreateShopRequest
@@ -133,20 +138,22 @@ var file_view_provider_service_proto_depIdxs = []int32{
 	9,  // 9: ViewProviderService.UpdateBusinessInfo:input_type -> UpdateBusinessInfoRequest
 	10, // 10: ViewProviderService.UpdateOperationalHours:input_type -> UpdateOperationalHoursRequest
 	11, // 11: ViewProviderService.GetOrders:input_type -> GetOrdersRequest
-	12, // 12: ViewProviderService.CreateShop:output_type -> CreateShopResponse
-	13, // 13: ViewProviderService.DeleteShop:output_type -> DeleteShopResponse
-	14, // 14: ViewProviderService.AddProduct:output_type -> AddProductResponse
-	15, // 15: ViewProviderService.DelProduct:output_type -> DelProductResponse
-	16, // 16: ViewProviderService.GetShopDetails:output_type -> GetShopDetailsResponse
-	17, // 17: ViewProviderService.UpdateShopPrimaryImage:output_type -> UpdateShopPrimaryImageResponse
-	18, // 18: ViewProviderService.UpdateShopKeeperName:output_type -> UpdateShopKeeperNameResponse
-	19, // 19: ViewProviderService.UpdateShopAddressAndLocation:output_type -> UpdateShopAddressAndLocationResponse
-	20, // 20: ViewProviderService.UpdateCategory:output_type -> UpdateCategoryResponse
-	21, // 21: ViewProviderService.UpdateBusinessInfo:output_type -> UpdateBusinessInfoResponse
-	22, // 22: ViewProviderService.UpdateOperationalHours:output_type -> UpdateOperationalHoursResponse
-	23, // 23: ViewProviderService.GetOrders:output_type -> GetOrdersResponse
-	12, // [12:24] is the sub-list for method output_type
-	0,  // [0:12] is the sub-list for method input_type
+	12, // 12: ViewProviderService.GetProducts:input_type -> GetProductsRequest
+	13, // 13: ViewProviderService.CreateShop:output_type -> CreateShopResponse
+	14, // 14: ViewProviderService.DeleteShop:output_type -> DeleteShopResponse
+	15, // 15: ViewProviderService.AddProduct:output_type -> AddProductResponse
+	16, // 16: ViewProviderService.DelProduct:output_type -> DelProductResponse
+	17, // 17: ViewProviderService.GetShopDetails:output_type -> GetShopDetailsResponse
+	18, // 18: ViewProviderService.UpdateShopPrimaryImage:output_type -> UpdateShopPrimaryImageResponse
+	19, // 19: ViewProviderService.UpdateShopKeeperName:output_type -> UpdateShopKeeperNameResponse
+	20, // 20: ViewProviderService.UpdateShopAddressAndLocation:output_type -> UpdateShopAddressAndLocationResponse
+	21, // 21: ViewProviderService.UpdateCategory:output_type -> UpdateCategoryResponse
+	22, // 22: ViewProviderService.UpdateBusinessInfo:output_type -> UpdateBusinessInfoResponse
+	23, // 23: ViewProviderService.UpdateOperationalHours:output_type -> UpdateOperationalHoursResponse
+	24, // 24: ViewProviderService.GetOrders:output_type -> GetOrdersResponse
+	25, // 25: ViewProviderService.GetProducts:output_type -> GetProductsResponse
+	13, // [13:26] is the sub-list for method output_type
+	0,  // [0:13] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -203,6 +210,7 @@ type ViewProviderServiceClient interface {
 	UpdateBusinessInfo(ctx context.Context, in *UpdateBusinessInfoRequest, opts ...grpc.CallOption) (*UpdateBusinessInfoResponse, error)
 	UpdateOperationalHours(ctx context.Context, in *UpdateOperationalHoursRequest, opts ...grpc.CallOption) (*UpdateOperationalHoursResponse, error)
 	GetOrders(ctx context.Context, in *GetOrdersRequest, opts ...grpc.CallOption) (ViewProviderService_GetOrdersClient, error)
+	GetProducts(ctx context.Context, in *GetProductsRequest, opts ...grpc.CallOption) (ViewProviderService_GetProductsClient, error)
 }
 
 type viewProviderServiceClient struct {
@@ -344,6 +352,38 @@ func (x *viewProviderServiceGetOrdersClient) Recv() (*GetOrdersResponse, error) 
 	return m, nil
 }
 
+func (c *viewProviderServiceClient) GetProducts(ctx context.Context, in *GetProductsRequest, opts ...grpc.CallOption) (ViewProviderService_GetProductsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_ViewProviderService_serviceDesc.Streams[1], "/ViewProviderService/GetProducts", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &viewProviderServiceGetProductsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ViewProviderService_GetProductsClient interface {
+	Recv() (*GetProductsResponse, error)
+	grpc.ClientStream
+}
+
+type viewProviderServiceGetProductsClient struct {
+	grpc.ClientStream
+}
+
+func (x *viewProviderServiceGetProductsClient) Recv() (*GetProductsResponse, error) {
+	m := new(GetProductsResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // ViewProviderServiceServer is the server API for ViewProviderService service.
 type ViewProviderServiceServer interface {
 	CreateShop(context.Context, *CreateShopRequest) (*CreateShopResponse, error)
@@ -358,6 +398,7 @@ type ViewProviderServiceServer interface {
 	UpdateBusinessInfo(context.Context, *UpdateBusinessInfoRequest) (*UpdateBusinessInfoResponse, error)
 	UpdateOperationalHours(context.Context, *UpdateOperationalHoursRequest) (*UpdateOperationalHoursResponse, error)
 	GetOrders(*GetOrdersRequest, ViewProviderService_GetOrdersServer) error
+	GetProducts(*GetProductsRequest, ViewProviderService_GetProductsServer) error
 }
 
 // UnimplementedViewProviderServiceServer can be embedded to have forward compatible implementations.
@@ -399,6 +440,9 @@ func (*UnimplementedViewProviderServiceServer) UpdateOperationalHours(context.Co
 }
 func (*UnimplementedViewProviderServiceServer) GetOrders(*GetOrdersRequest, ViewProviderService_GetOrdersServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetOrders not implemented")
+}
+func (*UnimplementedViewProviderServiceServer) GetProducts(*GetProductsRequest, ViewProviderService_GetProductsServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetProducts not implemented")
 }
 
 func RegisterViewProviderServiceServer(s *grpc.Server, srv ViewProviderServiceServer) {
@@ -624,6 +668,27 @@ func (x *viewProviderServiceGetOrdersServer) Send(m *GetOrdersResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
+func _ViewProviderService_GetProducts_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GetProductsRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ViewProviderServiceServer).GetProducts(m, &viewProviderServiceGetProductsServer{stream})
+}
+
+type ViewProviderService_GetProductsServer interface {
+	Send(*GetProductsResponse) error
+	grpc.ServerStream
+}
+
+type viewProviderServiceGetProductsServer struct {
+	grpc.ServerStream
+}
+
+func (x *viewProviderServiceGetProductsServer) Send(m *GetProductsResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 var _ViewProviderService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "ViewProviderService",
 	HandlerType: (*ViewProviderServiceServer)(nil),
@@ -677,6 +742,11 @@ var _ViewProviderService_serviceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "GetOrders",
 			Handler:       _ViewProviderService_GetOrders_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "GetProducts",
+			Handler:       _ViewProviderService_GetProducts_Handler,
 			ServerStreams: true,
 		},
 	},

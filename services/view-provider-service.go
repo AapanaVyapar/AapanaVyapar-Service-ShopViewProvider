@@ -56,6 +56,44 @@ func NewViewProviderService(ctx context.Context) *ViewProviderService {
 	return &view
 }
 
+func (viewServer *ViewProviderService) GetProducts(request *pb.GetProductsRequest, stream pb.ViewProviderService_GetProductsServer) error {
+	if !helpers.CheckForAPIKey(request.GetApiKey()) {
+		return status.Errorf(codes.Unauthenticated, "No API Key Is Specified")
+	}
+
+	receivedToken, err := helpers.ValidateToken(stream.Context(), request.GetToken(), os.Getenv("CREATE_SHOP_TOKEN_SECRETE"), helpers.External)
+	if err != nil {
+		return status.Errorf(codes.Unauthenticated, "Request With Invalid Token")
+	}
+
+	err = viewServer.Data.GetAllProductsOfShopByFunctionFromProductData(stream.Context(), receivedToken.Audience, func(data structs.ProductData) error {
+
+		fmt.Println("Product Name : " + data.Title)
+
+		err = stream.Send(&pb.GetProductsResponse{
+			ProductName:  data.Title,
+			Description:  data.Description,
+			ShippingInfo: data.ShippingInfo,
+			Stock:        data.Stock,
+			Price:        data.Price,
+			Offer:        data.Offer,
+			Images:       data.Images,
+			Category:     data.Category,
+		})
+		if err != nil {
+			return status.Errorf(codes.Unknown, "Stream Error")
+		}
+
+		return nil
+	})
+	if err != nil {
+		return status.Errorf(codes.Unknown, "Unable To Get Products")
+	}
+
+	return nil
+
+}
+
 func (viewServer *ViewProviderService) GetOrders(request *pb.GetOrdersRequest, stream pb.ViewProviderService_GetOrdersServer) error {
 	if !helpers.CheckForAPIKey(request.GetApiKey()) {
 		return status.Errorf(codes.Unauthenticated, "No API Key Is Specified")
@@ -227,6 +265,7 @@ func (viewServer *ViewProviderService) AddProduct(ctx context.Context, request *
 
 	receivedToken, err := helpers.ValidateToken(ctx, request.GetToken(), os.Getenv("AUTH_SHOP_TOKEN_SECRETE"), helpers.External)
 	if err != nil {
+		fmt.Println(err)
 		return nil, status.Errorf(codes.Unauthenticated, "Request With Invalid Token")
 	}
 
@@ -234,6 +273,7 @@ func (viewServer *ViewProviderService) AddProduct(ctx context.Context, request *
 
 	_, err = viewServer.Cash.GetShopDataFromCash(ctx, receivedToken.Audience)
 	if err != nil {
+		fmt.Println(err)
 		return nil, status.Errorf(codes.NotFound, "Shop Not Found")
 	}
 
@@ -253,6 +293,7 @@ func (viewServer *ViewProviderService) AddProduct(ctx context.Context, request *
 
 	id, err := viewServer.Data.CreateProduct(ctx, productData)
 	if err != nil {
+		fmt.Println(err)
 		return nil, status.Errorf(codes.Unknown, "Unable To Add Product")
 	}
 
@@ -261,17 +302,20 @@ func (viewServer *ViewProviderService) AddProduct(ctx context.Context, request *
 
 	err = viewServer.Cash.AddProductDataToCash(ctx, id.Hex(), marshalData)
 	if err != nil {
+		fmt.Println(err)
 		return nil, err
 	}
 
 	// Note Remember To Add Product To ShopProduct Map In Stream
 	err = viewServer.Cash.AddShopProductMapDataToCash(ctx, productData.ShopId, productData.ProductId.Hex())
 	if err != nil {
+		fmt.Println(err)
 		return nil, err
 	}
 
 	err = viewServer.Cash.AddProductInProductStream(ctx, marshalData)
 	if err != nil {
+		fmt.Println(err)
 		return nil, err
 	}
 
@@ -341,15 +385,19 @@ func (viewServer *ViewProviderService) GetShopDetails(ctx context.Context, reque
 	var shopData structs.ShopData
 	structs.UnmarshalShopData([]byte(shopBytes), &shopData)
 
-	var ratings []*pb.RatingOfShop
-	for _, rat := range *shopData.Ratings {
-		rating := pb.RatingOfShop{}
-		rating.UserName = rat.UserName
-		rating.Timestamp = rat.Timestamp.String()
-		rating.Comment = rat.Comment
-		rating.Rating = rat.Rating
+	fmt.Println(shopData)
 
-		ratings = append(ratings, &rating)
+	var ratings []*pb.RatingOfShop
+	if shopData.Ratings != nil && len(*shopData.Ratings) > 0 {
+		for _, rat := range *shopData.Ratings {
+			rating := pb.RatingOfShop{}
+			rating.UserName = rat.UserName
+			rating.Timestamp = rat.Timestamp.String()
+			rating.Comment = rat.Comment
+			rating.Rating = rat.Rating
+
+			ratings = append(ratings, &rating)
+		}
 	}
 
 	return &pb.GetShopDetailsResponse{
