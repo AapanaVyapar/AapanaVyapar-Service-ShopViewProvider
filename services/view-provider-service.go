@@ -84,6 +84,7 @@ func (viewServer *ViewProviderService) GetProducts(request *pb.GetProductsReques
 		fmt.Println("Product Name : " + data.Title)
 
 		err = stream.Send(&pb.GetProductsResponse{
+			ProductId:    data.ProductId.Hex(),
 			ProductName:  data.Title,
 			Description:  data.Description,
 			ShippingInfo: data.ShippingInfo,
