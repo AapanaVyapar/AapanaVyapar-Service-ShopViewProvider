@@ -33,7 +33,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Can not start server", err)
 	}
-
+	fmt.Println("Server Started")
 }
 
 //func main() {

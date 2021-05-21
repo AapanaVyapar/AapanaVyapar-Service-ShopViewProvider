@@ -131,6 +131,28 @@ type CashStructureProductArray struct {
 	Products []string `json:"products"`
 }
 
+type UpdateProductDataForUserCache struct {
+	ProductId    string        `bson:"product_id" json:"product_id" validate:"required"`
+	ProductName  string        `bson:"product_name" json:"product_name" validate:"required"`
+	PrimaryImage string        `bson:"primary_image" json:"primary_image" validate:"required"`
+	Category     []pb.Category `bson:"category" json:"category" validate:"required"`
+}
+
+func (m *UpdateProductDataForUserCache) Marshal() []byte {
+	data, err := json.Marshal(m)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return data
+}
+
+func UnmarshalUpdateProductDataForUserCache(data []byte, m *UpdateProductDataForUserCache) {
+	err := json.Unmarshal(data, &m)
+	if err != nil {
+		fmt.Println(err)
+	}
+}
+
 func (m *BasicCategoriesData) Marshal() []byte {
 	data, err := json.Marshal(m)
 	if err != nil {

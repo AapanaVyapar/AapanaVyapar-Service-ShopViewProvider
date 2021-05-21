@@ -97,6 +97,18 @@ func (viewServer *ViewProviderService) InitProductStream(ctx context.Context) er
 	return nil
 }
 
+func (viewServer *ViewProviderService) InitUpdateProductStream(ctx context.Context) error {
+	err := viewServer.CreateUpdateProductStream(ctx)
+	if err != nil {
+		if strings.Contains(err.Error(), "already exist") {
+			fmt.Println("Update Stream Already Exist")
+			return nil
+		}
+		return err
+	}
+	return nil
+}
+
 func (viewServer *ViewProviderService) CreateShopStream(ctx context.Context) error {
 	return viewServer.Cash.Cash.XGroupCreateMkStream(ctx, os.Getenv("REDIS_STREAM_SHOP_NAME"), os.Getenv("REDIS_STREAM_SHOP_GROUP"), "$").Err()
 
@@ -104,5 +116,10 @@ func (viewServer *ViewProviderService) CreateShopStream(ctx context.Context) err
 
 func (viewServer *ViewProviderService) CreateProductStream(ctx context.Context) error {
 	return viewServer.Cash.Cash.XGroupCreateMkStream(ctx, os.Getenv("REDIS_STREAM_PRODUCT_NAME"), os.Getenv("REDIS_STREAM_PRODUCT_GROUP"), "$").Err()
+
+}
+
+func (viewServer *ViewProviderService) CreateUpdateProductStream(ctx context.Context) error {
+	return viewServer.Cash.Cash.XGroupCreateMkStream(ctx, os.Getenv("REDIS_STREAM_UPDATE_PRODUCT_NAME"), os.Getenv("REDIS_STREAM_UPDATE_PRODUCT_GROUP"), "$").Err()
 
 }

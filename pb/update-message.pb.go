@@ -20,6 +20,180 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type UpdateProductDataRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Token        string     `protobuf:"bytes,55,opt,name=Token,proto3" json:"Token,omitempty"`
+	ApiKey       string     `protobuf:"bytes,56,opt,name=ApiKey,proto3" json:"ApiKey,omitempty"`
+	Title        string     `protobuf:"bytes,57,opt,name=Title,proto3" json:"Title,omitempty"`
+	Description  string     `protobuf:"bytes,58,opt,name=Description,proto3" json:"Description,omitempty"`
+	ShippingInfo string     `protobuf:"bytes,59,opt,name=ShippingInfo,proto3" json:"ShippingInfo,omitempty"`
+	Stock        uint32     `protobuf:"varint,60,opt,name=Stock,proto3" json:"Stock,omitempty"`
+	Price        float32    `protobuf:"fixed32,61,opt,name=Price,proto3" json:"Price,omitempty"`
+	Offer        uint32     `protobuf:"varint,62,opt,name=Offer,proto3" json:"Offer,omitempty"`
+	Images       []string   `protobuf:"bytes,63,rep,name=Images,proto3" json:"Images,omitempty"`
+	Category     []Category `protobuf:"varint,64,rep,packed,name=Category,proto3,enum=Category" json:"Category,omitempty"`
+	ProductId    string     `protobuf:"bytes,65,opt,name=productId,proto3" json:"productId,omitempty"`
+}
+
+func (x *UpdateProductDataRequest) Reset() {
+	*x = UpdateProductDataRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_update_message_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateProductDataRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateProductDataRequest) ProtoMessage() {}
+
+func (x *UpdateProductDataRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_update_message_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateProductDataRequest.ProtoReflect.Descriptor instead.
+func (*UpdateProductDataRequest) Descriptor() ([]byte, []int) {
+	return file_update_message_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *UpdateProductDataRequest) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
+}
+
+func (x *UpdateProductDataRequest) GetApiKey() string {
+	if x != nil {
+		return x.ApiKey
+	}
+	return ""
+}
+
+func (x *UpdateProductDataRequest) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *UpdateProductDataRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *UpdateProductDataRequest) GetShippingInfo() string {
+	if x != nil {
+		return x.ShippingInfo
+	}
+	return ""
+}
+
+func (x *UpdateProductDataRequest) GetStock() uint32 {
+	if x != nil {
+		return x.Stock
+	}
+	return 0
+}
+
+func (x *UpdateProductDataRequest) GetPrice() float32 {
+	if x != nil {
+		return x.Price
+	}
+	return 0
+}
+
+func (x *UpdateProductDataRequest) GetOffer() uint32 {
+	if x != nil {
+		return x.Offer
+	}
+	return 0
+}
+
+func (x *UpdateProductDataRequest) GetImages() []string {
+	if x != nil {
+		return x.Images
+	}
+	return nil
+}
+
+func (x *UpdateProductDataRequest) GetCategory() []Category {
+	if x != nil {
+		return x.Category
+	}
+	return nil
+}
+
+func (x *UpdateProductDataRequest) GetProductId() string {
+	if x != nil {
+		return x.ProductId
+	}
+	return ""
+}
+
+type UpdateProductDataResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Ok bool `protobuf:"varint,67,opt,name=ok,proto3" json:"ok,omitempty"`
+}
+
+func (x *UpdateProductDataResponse) Reset() {
+	*x = UpdateProductDataResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_update_message_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateProductDataResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateProductDataResponse) ProtoMessage() {}
+
+func (x *UpdateProductDataResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_update_message_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateProductDataResponse.ProtoReflect.Descriptor instead.
+func (*UpdateProductDataResponse) Descriptor() ([]byte, []int) {
+	return file_update_message_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *UpdateProductDataResponse) GetOk() bool {
+	if x != nil {
+		return x.Ok
+	}
+	return false
+}
+
 type UpdateShopPrimaryImageRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -29,7 +203,7 @@ type UpdateShopPrimaryImageRequest struct {
 func (x *UpdateShopPrimaryImageRequest) Reset() {
 	*x = UpdateShopPrimaryImageRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_update_message_proto_msgTypes[0]
+		mi := &file_update_message_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -42,7 +216,7 @@ func (x *UpdateShopPrimaryImageRequest) String() string {
 func (*UpdateShopPrimaryImageRequest) ProtoMessage() {}
 
 func (x *UpdateShopPrimaryImageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_update_message_proto_msgTypes[0]
+	mi := &file_update_message_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +229,7 @@ func (x *UpdateShopPrimaryImageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateShopPrimaryImageRequest.ProtoReflect.Descriptor instead.
 func (*UpdateShopPrimaryImageRequest) Descriptor() ([]byte, []int) {
-	return file_update_message_proto_rawDescGZIP(), []int{0}
+	return file_update_message_proto_rawDescGZIP(), []int{2}
 }
 
 type UpdateShopPrimaryImageResponse struct {
@@ -67,7 +241,7 @@ type UpdateShopPrimaryImageResponse struct {
 func (x *UpdateShopPrimaryImageResponse) Reset() {
 	*x = UpdateShopPrimaryImageResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_update_message_proto_msgTypes[1]
+		mi := &file_update_message_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -80,7 +254,7 @@ func (x *UpdateShopPrimaryImageResponse) String() string {
 func (*UpdateShopPrimaryImageResponse) ProtoMessage() {}
 
 func (x *UpdateShopPrimaryImageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_update_message_proto_msgTypes[1]
+	mi := &file_update_message_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -93,7 +267,7 @@ func (x *UpdateShopPrimaryImageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateShopPrimaryImageResponse.ProtoReflect.Descriptor instead.
 func (*UpdateShopPrimaryImageResponse) Descriptor() ([]byte, []int) {
-	return file_update_message_proto_rawDescGZIP(), []int{1}
+	return file_update_message_proto_rawDescGZIP(), []int{3}
 }
 
 type UpdateShopKeeperNameRequest struct {
@@ -105,7 +279,7 @@ type UpdateShopKeeperNameRequest struct {
 func (x *UpdateShopKeeperNameRequest) Reset() {
 	*x = UpdateShopKeeperNameRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_update_message_proto_msgTypes[2]
+		mi := &file_update_message_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -118,7 +292,7 @@ func (x *UpdateShopKeeperNameRequest) String() string {
 func (*UpdateShopKeeperNameRequest) ProtoMessage() {}
 
 func (x *UpdateShopKeeperNameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_update_message_proto_msgTypes[2]
+	mi := &file_update_message_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -131,7 +305,7 @@ func (x *UpdateShopKeeperNameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateShopKeeperNameRequest.ProtoReflect.Descriptor instead.
 func (*UpdateShopKeeperNameRequest) Descriptor() ([]byte, []int) {
-	return file_update_message_proto_rawDescGZIP(), []int{2}
+	return file_update_message_proto_rawDescGZIP(), []int{4}
 }
 
 type UpdateShopKeeperNameResponse struct {
@@ -143,7 +317,7 @@ type UpdateShopKeeperNameResponse struct {
 func (x *UpdateShopKeeperNameResponse) Reset() {
 	*x = UpdateShopKeeperNameResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_update_message_proto_msgTypes[3]
+		mi := &file_update_message_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -156,7 +330,7 @@ func (x *UpdateShopKeeperNameResponse) String() string {
 func (*UpdateShopKeeperNameResponse) ProtoMessage() {}
 
 func (x *UpdateShopKeeperNameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_update_message_proto_msgTypes[3]
+	mi := &file_update_message_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -169,7 +343,7 @@ func (x *UpdateShopKeeperNameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateShopKeeperNameResponse.ProtoReflect.Descriptor instead.
 func (*UpdateShopKeeperNameResponse) Descriptor() ([]byte, []int) {
-	return file_update_message_proto_rawDescGZIP(), []int{3}
+	return file_update_message_proto_rawDescGZIP(), []int{5}
 }
 
 type UpdateShopAddressAndLocationRequest struct {
@@ -181,7 +355,7 @@ type UpdateShopAddressAndLocationRequest struct {
 func (x *UpdateShopAddressAndLocationRequest) Reset() {
 	*x = UpdateShopAddressAndLocationRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_update_message_proto_msgTypes[4]
+		mi := &file_update_message_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -194,7 +368,7 @@ func (x *UpdateShopAddressAndLocationRequest) String() string {
 func (*UpdateShopAddressAndLocationRequest) ProtoMessage() {}
 
 func (x *UpdateShopAddressAndLocationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_update_message_proto_msgTypes[4]
+	mi := &file_update_message_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -207,7 +381,7 @@ func (x *UpdateShopAddressAndLocationRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use UpdateShopAddressAndLocationRequest.ProtoReflect.Descriptor instead.
 func (*UpdateShopAddressAndLocationRequest) Descriptor() ([]byte, []int) {
-	return file_update_message_proto_rawDescGZIP(), []int{4}
+	return file_update_message_proto_rawDescGZIP(), []int{6}
 }
 
 type UpdateShopAddressAndLocationResponse struct {
@@ -219,7 +393,7 @@ type UpdateShopAddressAndLocationResponse struct {
 func (x *UpdateShopAddressAndLocationResponse) Reset() {
 	*x = UpdateShopAddressAndLocationResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_update_message_proto_msgTypes[5]
+		mi := &file_update_message_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -232,7 +406,7 @@ func (x *UpdateShopAddressAndLocationResponse) String() string {
 func (*UpdateShopAddressAndLocationResponse) ProtoMessage() {}
 
 func (x *UpdateShopAddressAndLocationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_update_message_proto_msgTypes[5]
+	mi := &file_update_message_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -245,7 +419,7 @@ func (x *UpdateShopAddressAndLocationResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use UpdateShopAddressAndLocationResponse.ProtoReflect.Descriptor instead.
 func (*UpdateShopAddressAndLocationResponse) Descriptor() ([]byte, []int) {
-	return file_update_message_proto_rawDescGZIP(), []int{5}
+	return file_update_message_proto_rawDescGZIP(), []int{7}
 }
 
 type UpdateCategoryRequest struct {
@@ -257,7 +431,7 @@ type UpdateCategoryRequest struct {
 func (x *UpdateCategoryRequest) Reset() {
 	*x = UpdateCategoryRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_update_message_proto_msgTypes[6]
+		mi := &file_update_message_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -270,7 +444,7 @@ func (x *UpdateCategoryRequest) String() string {
 func (*UpdateCategoryRequest) ProtoMessage() {}
 
 func (x *UpdateCategoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_update_message_proto_msgTypes[6]
+	mi := &file_update_message_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -283,7 +457,7 @@ func (x *UpdateCategoryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCategoryRequest.ProtoReflect.Descriptor instead.
 func (*UpdateCategoryRequest) Descriptor() ([]byte, []int) {
-	return file_update_message_proto_rawDescGZIP(), []int{6}
+	return file_update_message_proto_rawDescGZIP(), []int{8}
 }
 
 type UpdateCategoryResponse struct {
@@ -295,7 +469,7 @@ type UpdateCategoryResponse struct {
 func (x *UpdateCategoryResponse) Reset() {
 	*x = UpdateCategoryResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_update_message_proto_msgTypes[7]
+		mi := &file_update_message_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -308,7 +482,7 @@ func (x *UpdateCategoryResponse) String() string {
 func (*UpdateCategoryResponse) ProtoMessage() {}
 
 func (x *UpdateCategoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_update_message_proto_msgTypes[7]
+	mi := &file_update_message_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -321,7 +495,7 @@ func (x *UpdateCategoryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCategoryResponse.ProtoReflect.Descriptor instead.
 func (*UpdateCategoryResponse) Descriptor() ([]byte, []int) {
-	return file_update_message_proto_rawDescGZIP(), []int{7}
+	return file_update_message_proto_rawDescGZIP(), []int{9}
 }
 
 type UpdateBusinessInfoRequest struct {
@@ -333,7 +507,7 @@ type UpdateBusinessInfoRequest struct {
 func (x *UpdateBusinessInfoRequest) Reset() {
 	*x = UpdateBusinessInfoRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_update_message_proto_msgTypes[8]
+		mi := &file_update_message_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -346,7 +520,7 @@ func (x *UpdateBusinessInfoRequest) String() string {
 func (*UpdateBusinessInfoRequest) ProtoMessage() {}
 
 func (x *UpdateBusinessInfoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_update_message_proto_msgTypes[8]
+	mi := &file_update_message_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -359,7 +533,7 @@ func (x *UpdateBusinessInfoRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateBusinessInfoRequest.ProtoReflect.Descriptor instead.
 func (*UpdateBusinessInfoRequest) Descriptor() ([]byte, []int) {
-	return file_update_message_proto_rawDescGZIP(), []int{8}
+	return file_update_message_proto_rawDescGZIP(), []int{10}
 }
 
 type UpdateBusinessInfoResponse struct {
@@ -371,7 +545,7 @@ type UpdateBusinessInfoResponse struct {
 func (x *UpdateBusinessInfoResponse) Reset() {
 	*x = UpdateBusinessInfoResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_update_message_proto_msgTypes[9]
+		mi := &file_update_message_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -384,7 +558,7 @@ func (x *UpdateBusinessInfoResponse) String() string {
 func (*UpdateBusinessInfoResponse) ProtoMessage() {}
 
 func (x *UpdateBusinessInfoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_update_message_proto_msgTypes[9]
+	mi := &file_update_message_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -397,7 +571,7 @@ func (x *UpdateBusinessInfoResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateBusinessInfoResponse.ProtoReflect.Descriptor instead.
 func (*UpdateBusinessInfoResponse) Descriptor() ([]byte, []int) {
-	return file_update_message_proto_rawDescGZIP(), []int{9}
+	return file_update_message_proto_rawDescGZIP(), []int{11}
 }
 
 type UpdateOperationalHoursRequest struct {
@@ -409,7 +583,7 @@ type UpdateOperationalHoursRequest struct {
 func (x *UpdateOperationalHoursRequest) Reset() {
 	*x = UpdateOperationalHoursRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_update_message_proto_msgTypes[10]
+		mi := &file_update_message_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -422,7 +596,7 @@ func (x *UpdateOperationalHoursRequest) String() string {
 func (*UpdateOperationalHoursRequest) ProtoMessage() {}
 
 func (x *UpdateOperationalHoursRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_update_message_proto_msgTypes[10]
+	mi := &file_update_message_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -435,7 +609,7 @@ func (x *UpdateOperationalHoursRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateOperationalHoursRequest.ProtoReflect.Descriptor instead.
 func (*UpdateOperationalHoursRequest) Descriptor() ([]byte, []int) {
-	return file_update_message_proto_rawDescGZIP(), []int{10}
+	return file_update_message_proto_rawDescGZIP(), []int{12}
 }
 
 type UpdateOperationalHoursResponse struct {
@@ -447,7 +621,7 @@ type UpdateOperationalHoursResponse struct {
 func (x *UpdateOperationalHoursResponse) Reset() {
 	*x = UpdateOperationalHoursResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_update_message_proto_msgTypes[11]
+		mi := &file_update_message_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -460,7 +634,7 @@ func (x *UpdateOperationalHoursResponse) String() string {
 func (*UpdateOperationalHoursResponse) ProtoMessage() {}
 
 func (x *UpdateOperationalHoursResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_update_message_proto_msgTypes[11]
+	mi := &file_update_message_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -473,42 +647,67 @@ func (x *UpdateOperationalHoursResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateOperationalHoursResponse.ProtoReflect.Descriptor instead.
 func (*UpdateOperationalHoursResponse) Descriptor() ([]byte, []int) {
-	return file_update_message_proto_rawDescGZIP(), []int{11}
+	return file_update_message_proto_rawDescGZIP(), []int{13}
 }
 
 var File_update_message_proto protoreflect.FileDescriptor
 
 var file_update_message_proto_rawDesc = []byte{
 	0x0a, 0x14, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x2d, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
-	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x1f, 0x0a, 0x1d, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x53, 0x68, 0x6f, 0x70, 0x50, 0x72, 0x69, 0x6d, 0x61, 0x72, 0x79, 0x49, 0x6d, 0x61, 0x67, 0x65,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x20, 0x0a, 0x1e, 0x55, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x53, 0x68, 0x6f, 0x70, 0x50, 0x72, 0x69, 0x6d, 0x61, 0x72, 0x79, 0x49, 0x6d, 0x61, 0x67,
-	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1d, 0x0a, 0x1b, 0x55, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x53, 0x68, 0x6f, 0x70, 0x4b, 0x65, 0x65, 0x70, 0x65, 0x72, 0x4e, 0x61, 0x6d,
-	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x1e, 0x0a, 0x1c, 0x55, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x53, 0x68, 0x6f, 0x70, 0x4b, 0x65, 0x65, 0x70, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x25, 0x0a, 0x23, 0x55, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x53, 0x68, 0x6f, 0x70, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x41, 0x6e, 0x64,
-	0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22,
-	0x26, 0x0a, 0x24, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x53, 0x68, 0x6f, 0x70, 0x41, 0x64, 0x64,
-	0x72, 0x65, 0x73, 0x73, 0x41, 0x6e, 0x64, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x17, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x22, 0x18, 0x0a, 0x16, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f,
-	0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1b, 0x0a, 0x19, 0x55, 0x70,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x73, 0x68, 0x6f, 0x70, 0x2d, 0x76, 0x69, 0x65,
+	0x77, 0x2d, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2d, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xc3, 0x02, 0x0a, 0x18, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x37, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x05, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x16, 0x0a, 0x06, 0x41, 0x70, 0x69,
+	0x4b, 0x65, 0x79, 0x18, 0x38, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x41, 0x70, 0x69, 0x4b, 0x65,
+	0x79, 0x12, 0x14, 0x0a, 0x05, 0x54, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x39, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x05, 0x54, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x44, 0x65, 0x73, 0x63, 0x72,
+	0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x3a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x44, 0x65,
+	0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x22, 0x0a, 0x0c, 0x53, 0x68, 0x69,
+	0x70, 0x70, 0x69, 0x6e, 0x67, 0x49, 0x6e, 0x66, 0x6f, 0x18, 0x3b, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0c, 0x53, 0x68, 0x69, 0x70, 0x70, 0x69, 0x6e, 0x67, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x14, 0x0a,
+	0x05, 0x53, 0x74, 0x6f, 0x63, 0x6b, 0x18, 0x3c, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x05, 0x53, 0x74,
+	0x6f, 0x63, 0x6b, 0x12, 0x14, 0x0a, 0x05, 0x50, 0x72, 0x69, 0x63, 0x65, 0x18, 0x3d, 0x20, 0x01,
+	0x28, 0x02, 0x52, 0x05, 0x50, 0x72, 0x69, 0x63, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x4f, 0x66, 0x66,
+	0x65, 0x72, 0x18, 0x3e, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x05, 0x4f, 0x66, 0x66, 0x65, 0x72, 0x12,
+	0x16, 0x0a, 0x06, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x73, 0x18, 0x3f, 0x20, 0x03, 0x28, 0x09, 0x52,
+	0x06, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x73, 0x12, 0x25, 0x0a, 0x08, 0x43, 0x61, 0x74, 0x65, 0x67,
+	0x6f, 0x72, 0x79, 0x18, 0x40, 0x20, 0x03, 0x28, 0x0e, 0x32, 0x09, 0x2e, 0x43, 0x61, 0x74, 0x65,
+	0x67, 0x6f, 0x72, 0x79, 0x52, 0x08, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x12, 0x1c,
+	0x0a, 0x09, 0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x49, 0x64, 0x18, 0x41, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x09, 0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x49, 0x64, 0x22, 0x2b, 0x0a, 0x19,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x44, 0x61, 0x74,
+	0x61, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x6f, 0x6b, 0x18,
+	0x43, 0x20, 0x01, 0x28, 0x08, 0x52, 0x02, 0x6f, 0x6b, 0x22, 0x1f, 0x0a, 0x1d, 0x55, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x53, 0x68, 0x6f, 0x70, 0x50, 0x72, 0x69, 0x6d, 0x61, 0x72, 0x79, 0x49, 0x6d,
+	0x61, 0x67, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x20, 0x0a, 0x1e, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x53, 0x68, 0x6f, 0x70, 0x50, 0x72, 0x69, 0x6d, 0x61, 0x72, 0x79, 0x49,
+	0x6d, 0x61, 0x67, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1d, 0x0a, 0x1b,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x53, 0x68, 0x6f, 0x70, 0x4b, 0x65, 0x65, 0x70, 0x65, 0x72,
+	0x4e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x1e, 0x0a, 0x1c, 0x55,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x53, 0x68, 0x6f, 0x70, 0x4b, 0x65, 0x65, 0x70, 0x65, 0x72, 0x4e,
+	0x61, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x25, 0x0a, 0x23, 0x55,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x53, 0x68, 0x6f, 0x70, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
+	0x41, 0x6e, 0x64, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x22, 0x26, 0x0a, 0x24, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x53, 0x68, 0x6f, 0x70,
+	0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x41, 0x6e, 0x64, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x17, 0x0a, 0x15, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x22, 0x18, 0x0a, 0x16, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x61, 0x74,
+	0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1b, 0x0a,
+	0x19, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x42, 0x75, 0x73, 0x69, 0x6e, 0x65, 0x73, 0x73, 0x49,
+	0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x1c, 0x0a, 0x1a, 0x55, 0x70,
 	0x64, 0x61, 0x74, 0x65, 0x42, 0x75, 0x73, 0x69, 0x6e, 0x65, 0x73, 0x73, 0x49, 0x6e, 0x66, 0x6f,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x1c, 0x0a, 0x1a, 0x55, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x42, 0x75, 0x73, 0x69, 0x6e, 0x65, 0x73, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1f, 0x0a, 0x1d, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f,
-	0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x48, 0x6f, 0x75, 0x72, 0x73, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x20, 0x0a, 0x1e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x48, 0x6f, 0x75, 0x72, 0x73,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x30, 0x0a, 0x26, 0x63, 0x6f, 0x6d, 0x2e,
-	0x61, 0x61, 0x70, 0x61, 0x6e, 0x61, 0x76, 0x79, 0x61, 0x70, 0x61, 0x72, 0x2e, 0x61, 0x61, 0x70,
-	0x61, 0x6e, 0x61, 0x76, 0x79, 0x61, 0x70, 0x61, 0x72, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x73, 0x50, 0x01, 0x5a, 0x04, 0x2e, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1f, 0x0a, 0x1d, 0x55, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x48, 0x6f, 0x75,
+	0x72, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x20, 0x0a, 0x1e, 0x55, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x48, 0x6f,
+	0x75, 0x72, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x30, 0x0a, 0x26, 0x63,
+	0x6f, 0x6d, 0x2e, 0x61, 0x61, 0x70, 0x61, 0x6e, 0x61, 0x76, 0x79, 0x61, 0x70, 0x61, 0x72, 0x2e,
+	0x61, 0x61, 0x70, 0x61, 0x6e, 0x61, 0x76, 0x79, 0x61, 0x70, 0x61, 0x72, 0x2e, 0x73, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x73, 0x50, 0x01, 0x5a, 0x04, 0x2e, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -523,27 +722,31 @@ func file_update_message_proto_rawDescGZIP() []byte {
 	return file_update_message_proto_rawDescData
 }
 
-var file_update_message_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_update_message_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_update_message_proto_goTypes = []interface{}{
-	(*UpdateShopPrimaryImageRequest)(nil),        // 0: UpdateShopPrimaryImageRequest
-	(*UpdateShopPrimaryImageResponse)(nil),       // 1: UpdateShopPrimaryImageResponse
-	(*UpdateShopKeeperNameRequest)(nil),          // 2: UpdateShopKeeperNameRequest
-	(*UpdateShopKeeperNameResponse)(nil),         // 3: UpdateShopKeeperNameResponse
-	(*UpdateShopAddressAndLocationRequest)(nil),  // 4: UpdateShopAddressAndLocationRequest
-	(*UpdateShopAddressAndLocationResponse)(nil), // 5: UpdateShopAddressAndLocationResponse
-	(*UpdateCategoryRequest)(nil),                // 6: UpdateCategoryRequest
-	(*UpdateCategoryResponse)(nil),               // 7: UpdateCategoryResponse
-	(*UpdateBusinessInfoRequest)(nil),            // 8: UpdateBusinessInfoRequest
-	(*UpdateBusinessInfoResponse)(nil),           // 9: UpdateBusinessInfoResponse
-	(*UpdateOperationalHoursRequest)(nil),        // 10: UpdateOperationalHoursRequest
-	(*UpdateOperationalHoursResponse)(nil),       // 11: UpdateOperationalHoursResponse
+	(*UpdateProductDataRequest)(nil),             // 0: UpdateProductDataRequest
+	(*UpdateProductDataResponse)(nil),            // 1: UpdateProductDataResponse
+	(*UpdateShopPrimaryImageRequest)(nil),        // 2: UpdateShopPrimaryImageRequest
+	(*UpdateShopPrimaryImageResponse)(nil),       // 3: UpdateShopPrimaryImageResponse
+	(*UpdateShopKeeperNameRequest)(nil),          // 4: UpdateShopKeeperNameRequest
+	(*UpdateShopKeeperNameResponse)(nil),         // 5: UpdateShopKeeperNameResponse
+	(*UpdateShopAddressAndLocationRequest)(nil),  // 6: UpdateShopAddressAndLocationRequest
+	(*UpdateShopAddressAndLocationResponse)(nil), // 7: UpdateShopAddressAndLocationResponse
+	(*UpdateCategoryRequest)(nil),                // 8: UpdateCategoryRequest
+	(*UpdateCategoryResponse)(nil),               // 9: UpdateCategoryResponse
+	(*UpdateBusinessInfoRequest)(nil),            // 10: UpdateBusinessInfoRequest
+	(*UpdateBusinessInfoResponse)(nil),           // 11: UpdateBusinessInfoResponse
+	(*UpdateOperationalHoursRequest)(nil),        // 12: UpdateOperationalHoursRequest
+	(*UpdateOperationalHoursResponse)(nil),       // 13: UpdateOperationalHoursResponse
+	(Category)(0),                                // 14: Category
 }
 var file_update_message_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	14, // 0: UpdateProductDataRequest.Category:type_name -> Category
+	1,  // [1:1] is the sub-list for method output_type
+	1,  // [1:1] is the sub-list for method input_type
+	1,  // [1:1] is the sub-list for extension type_name
+	1,  // [1:1] is the sub-list for extension extendee
+	0,  // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_update_message_proto_init() }
@@ -551,9 +754,10 @@ func file_update_message_proto_init() {
 	if File_update_message_proto != nil {
 		return
 	}
+	file_shop_view_common_message_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_update_message_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateShopPrimaryImageRequest); i {
+			switch v := v.(*UpdateProductDataRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -565,7 +769,7 @@ func file_update_message_proto_init() {
 			}
 		}
 		file_update_message_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateShopPrimaryImageResponse); i {
+			switch v := v.(*UpdateProductDataResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -577,7 +781,7 @@ func file_update_message_proto_init() {
 			}
 		}
 		file_update_message_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateShopKeeperNameRequest); i {
+			switch v := v.(*UpdateShopPrimaryImageRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -589,7 +793,7 @@ func file_update_message_proto_init() {
 			}
 		}
 		file_update_message_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateShopKeeperNameResponse); i {
+			switch v := v.(*UpdateShopPrimaryImageResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -601,7 +805,7 @@ func file_update_message_proto_init() {
 			}
 		}
 		file_update_message_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateShopAddressAndLocationRequest); i {
+			switch v := v.(*UpdateShopKeeperNameRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -613,7 +817,7 @@ func file_update_message_proto_init() {
 			}
 		}
 		file_update_message_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateShopAddressAndLocationResponse); i {
+			switch v := v.(*UpdateShopKeeperNameResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -625,7 +829,7 @@ func file_update_message_proto_init() {
 			}
 		}
 		file_update_message_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateCategoryRequest); i {
+			switch v := v.(*UpdateShopAddressAndLocationRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -637,7 +841,7 @@ func file_update_message_proto_init() {
 			}
 		}
 		file_update_message_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateCategoryResponse); i {
+			switch v := v.(*UpdateShopAddressAndLocationResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -649,7 +853,7 @@ func file_update_message_proto_init() {
 			}
 		}
 		file_update_message_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateBusinessInfoRequest); i {
+			switch v := v.(*UpdateCategoryRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -661,7 +865,7 @@ func file_update_message_proto_init() {
 			}
 		}
 		file_update_message_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateBusinessInfoResponse); i {
+			switch v := v.(*UpdateCategoryResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -673,7 +877,7 @@ func file_update_message_proto_init() {
 			}
 		}
 		file_update_message_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateOperationalHoursRequest); i {
+			switch v := v.(*UpdateBusinessInfoRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -685,6 +889,30 @@ func file_update_message_proto_init() {
 			}
 		}
 		file_update_message_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateBusinessInfoResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_update_message_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateOperationalHoursRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_update_message_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateOperationalHoursResponse); i {
 			case 0:
 				return &v.state
@@ -703,7 +931,7 @@ func file_update_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_update_message_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

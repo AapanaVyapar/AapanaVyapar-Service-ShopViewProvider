@@ -8,6 +8,7 @@ import (
 	"aapanavyapar-service-shopviewprovider/pb"
 	"context"
 	"fmt"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"os"
@@ -28,30 +29,42 @@ func NewViewProviderService(ctx context.Context) *ViewProviderService {
 		Cash: redisData,
 	}
 
+	fmt.Println("Created Obj")
 	err := view.LoadBasicCategoriesInCash(ctx)
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Loaded Basic Category")
 
 	err = view.LoadShopsInCash(ctx)
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Loaded Shop In Cache")
 
 	err = view.LoadProductsInCash(ctx)
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Loaded Product In Cache")
 
 	err = view.InitShopStream(ctx)
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Init Shop Stream")
 
 	err = view.InitProductStream(ctx)
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Init Product Stream")
+
+	err = view.InitUpdateProductStream(ctx)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Init Update Product Stream")
 
 	return &view
 }
@@ -256,6 +269,81 @@ func (viewServer *ViewProviderService) DeleteShop(ctx context.Context, request *
 	}
 
 	return &pb.DeleteShopResponse{Ok: true}, nil
+}
+
+func (viewServer *ViewProviderService) UpdateProductData(ctx context.Context, request *pb.UpdateProductDataRequest) (*pb.UpdateProductDataResponse, error) {
+	if !helpers.CheckForAPIKey(request.GetApiKey()) {
+		return nil, status.Errorf(codes.Unauthenticated, "No API Key Is Specified")
+	}
+
+	receivedToken, err := helpers.ValidateToken(ctx, request.GetToken(), os.Getenv("AUTH_SHOP_TOKEN_SECRETE"), helpers.External)
+	if err != nil {
+		fmt.Println(err)
+		return nil, status.Errorf(codes.Unauthenticated, "Request With Invalid Token")
+	}
+
+	_, err = viewServer.Cash.GetShopDataFromCash(ctx, receivedToken.Audience)
+	if err != nil {
+		fmt.Println(err)
+		return nil, status.Errorf(codes.NotFound, "Shop Not Found")
+	}
+
+	id, err := primitive.ObjectIDFromHex(request.GetProductId())
+	if err != nil {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid Product Id")
+	}
+
+	_, err = viewServer.Cash.GetProductDataFromCash(ctx, request.GetProductId())
+	if err != nil {
+		fmt.Println(err)
+		return nil, status.Errorf(codes.NotFound, "Product Not Found")
+	}
+
+	productData := structs.ProductData{
+		ShopId:       receivedToken.Audience,
+		ShopName:     receivedToken.Subject,
+		Title:        request.GetTitle(),
+		Description:  request.GetDescription(),
+		ShippingInfo: request.GetShippingInfo(),
+		Stock:        request.GetStock(),
+		Price:        request.GetPrice(),
+		Offer:        request.GetOffer(),
+		Images:       request.GetImages(),
+		Category:     request.GetCategory(),
+	}
+
+	productData.ProductId = id
+	marshalData := productData.Marshal()
+
+	err = viewServer.Data.UpdateProductInProductData(ctx, &productData)
+	if err != nil {
+		fmt.Println(err)
+		return nil, status.Errorf(codes.Internal, "Unable to add product data to database")
+	}
+
+	err = viewServer.Cash.AddProductDataToCash(ctx, id.Hex(), marshalData)
+	if err != nil {
+		fmt.Println(err)
+		return nil, status.Errorf(codes.Internal, "Unable to add product data to cache")
+	}
+
+	cardProduct := structs.UpdateProductDataForUserCache{
+		ProductId:    productData.ProductId.Hex(),
+		ProductName:  productData.Title,
+		PrimaryImage: productData.Images[0],
+		Category:     productData.Category,
+	}
+
+	marshalData = cardProduct.Marshal()
+	err = viewServer.Cash.AddUpdateProductInUpdateProductStream(ctx, marshalData)
+	if err != nil {
+		fmt.Println(err)
+		return nil, status.Errorf(codes.Internal, "Unable to add product data to stream")
+	}
+
+	return &pb.UpdateProductDataResponse{
+		Ok: true,
+	}, nil
 }
 
 func (viewServer *ViewProviderService) AddProduct(ctx context.Context, request *pb.AddProductRequest) (*pb.AddProductResponse, error) {

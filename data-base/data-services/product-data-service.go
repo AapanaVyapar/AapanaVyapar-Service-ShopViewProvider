@@ -370,6 +370,48 @@ func (dataBase *MongoDataBase) UpdateProductTitleInProductData(context context.C
 	return fmt.Errorf("unable to update product title")
 }
 
+func (dataBase *MongoDataBase) UpdateProductInProductData(context context.Context, productData *structs.ProductData) error {
+
+	if productData.Title == "" {
+		return fmt.Errorf("title can not be empty")
+	}
+
+	productDataCollection := mongodb.OpenProductDataCollection(dataBase.Data)
+
+	dataBase.mutex.Lock()
+	defer dataBase.mutex.Unlock()
+
+	result, err := productDataCollection.UpdateOne(context,
+		bson.M{
+			"shop_id": productData.ShopId,
+			"_id":     productData.ProductId,
+		},
+		bson.M{
+			"$set": bson.M{
+				"title":         productData.Title,
+				"description":   productData.Description,
+				"shipping_info": productData.ShippingInfo,
+				"stock":         productData.Stock,
+				"likes":         productData.Likes,
+				"price":         productData.Price,
+				"offer":         productData.Offer,
+				"images":        productData.Images,
+				"category":      productData.Category,
+			},
+		},
+	)
+
+	if err != nil {
+		return err
+	}
+
+	if result.ModifiedCount > 0 || result.MatchedCount > 0 {
+		return nil
+	}
+
+	return fmt.Errorf("unable to update product title")
+}
+
 func (dataBase *MongoDataBase) UpdateProductCategoryInProductData(context context.Context, shopId string, productId primitive.ObjectID, category []pb.Category) error {
 
 	if len(category) == 0 {

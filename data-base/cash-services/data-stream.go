@@ -69,3 +69,19 @@ func (dataBase *CashDataBase) DelProductFromProductStream(ctx context.Context, p
 
 	return nil
 }
+
+func (dataBase *CashDataBase) AddUpdateProductInUpdateProductStream(ctx context.Context, productUpdate []byte) error {
+
+	err := dataBase.Cash.XAdd(ctx, &redis.XAddArgs{
+		Stream:       os.Getenv("REDIS_STREAM_UPDATE_PRODUCT_NAME"),
+		MaxLen:       0,
+		MaxLenApprox: 0,
+		ID:           "",
+		Values:       []string{"productUpdate", string(productUpdate)},
+	}).Err()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}

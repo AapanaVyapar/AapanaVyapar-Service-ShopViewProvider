@@ -144,7 +144,7 @@ func GenerateAuthToken(userId string, userName string, refreshTokenId string, au
 	footer := "Powered By AapanaVypar"
 
 	// Encrypt data
-	token, err := paseto.Encrypt([]byte(os.Getenv("AUTH_TOKEN_SECRETE")), jsonToken, footer)
+	token, err := paseto.Encrypt([]byte(os.Getenv("AUTH_SHOP_TOKEN_SECRETE")), jsonToken, footer)
 
 	if err != nil {
 		return "", err
