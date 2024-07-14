@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+option go_package = ".;pb";
+option java_multiple_files = true;
+option java_package = "com.aapanavyapar.aapanavyapar.services";
+
+import "common-message.proto";
+
+message UpdateProductDataRequest {
+  string Token = 106;
+  string ApiKey = 107;
+  string Title = 108;
+  string Description = 109;
+  string ShippingInfo = 110;
+  uint32 Stock = 111;
+  float Price = 112;
+  uint32 Offer = 113;
+  repeated string Images = 114;
+  repeated Category Category = 115;
+  string productId = 116;
+}
+
+message UpdateProductDataResponse {
+  bool ok = 117;
+}
+
+message UpdateShopPrimaryImageRequest {
+
+}
+
+message UpdateShopPrimaryImageResponse {
+
+}
+
+message UpdateShopKeeperNameRequest {
+
+}
+
+message UpdateShopKeeperNameResponse {
+
+}
+
+message UpdateShopAddressAndLocationRequest {
+
+}
+
+message UpdateShopAddressAndLocationResponse {
+
+}
+
+message UpdateCategoryRequest {
+
+}
+
+message UpdateCategoryResponse {
+
+}
+
+message UpdateBusinessInfoRequest {
+
+}
+
+message UpdateBusinessInfoResponse {
+
+}
+
+message UpdateOperationalHoursRequest {
+
+}
+
+message UpdateOperationalHoursResponse {
+
+}
+

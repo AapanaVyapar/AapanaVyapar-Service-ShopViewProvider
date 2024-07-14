@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+option go_package = ".;pb";
+option java_multiple_files = true;
+option java_package = "com.aapanavyapar.aapanavyapar.services";
+
+import "common-message.proto";
+
+message CreateShopRequest {
+  string ApiKey = 41;
+  string Token = 42;
+  string ShopName = 43;
+  repeated string Images = 44;
+  string PrimaryImage = 45;
+  Address Address = 46;
+  Location Location = 47;
+  repeated Category Category = 48;
+  string BusinessInformation = 49;
+  OperationalHours OperationalHours = 50;
+
+}
+
+message CreateShopResponse {
+  bool Ok = 51;
+
+}
+
+message DeleteShopRequest {
+  string Token = 52;
+  string ApiKey = 53;       // Later Add OTP Conformation For Deletion Of Shop
+                            // Here The Shop Id Is In Token ie.Audience
+                            // Shop Name Is In Subject. ( Remember To Check )
+}
+
+message DeleteShopResponse {
+  bool Ok = 54;
+
+}
+
+message AddProductRequest {
+  string Token = 55;
+  string ApiKey = 56;
+  string Title = 57;
+  string Description = 58;
+  string ShippingInfo = 59;
+  uint32 Stock = 60;
+  float Price = 61;
+  uint32 Offer = 62;
+  repeated string Images = 63;
+  repeated Category Category = 64;
+
+}
+
+message AddProductResponse {
+  bool ok = 65;
+
+}
+
+message DelProductRequest {
+  string Token = 66;
+  string ApiKey = 67;
+  string ProductId = 68;
+
+}
+
+message DelProductResponse {
+  bool ok = 69;
+
+}

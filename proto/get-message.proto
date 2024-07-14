@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+option go_package = ".;pb";
+option java_multiple_files = true;
+option java_package = "com.aapanavyapar.aapanavyapar.services";
+
+import "common-message.proto";
+
+message GetShopDetailsRequest {
+  string ApiKey = 70;
+  string Token = 71;
+}
+
+message GetShopDetailsResponse {
+  string ShopName = 72;
+  string ShopKeeperName = 73;
+  repeated string Images = 74;
+  string PrimaryImage = 75;
+  Address Address = 76;
+  Location Location = 77;
+  repeated Category Category = 78;
+  string BusinessInformation = 79;
+  OperationalHours OperationalHours = 80;
+  repeated RatingOfShop ratings = 81;
+  string timestamp = 82;
+}
+
+message GetOrdersRequest {
+  string ApiKey = 83;
+  string Token = 84;
+}
+
+message GetOrdersResponse {
+  string orderId = 85;
+  Status status = 86;
+  string productId = 87;
+  string deliveryTimeStamp = 88;
+  string orderTimeStamp = 89;
+  float price = 90;
+  uint32 quantity = 91;
+  string productName = 92;
+  string productImage = 93;
+  Address address = 94;
+}
+
+message GetProductsRequest {
+  string ApiKey = 95;
+  string Token = 96;
+}
+
+message GetProductsResponse {
+  string productId = 97;
+  string productName = 98;
+  string Description = 99;
+  string ShippingInfo = 100;
+  uint32 Stock = 101;
+  float Price = 102;
+  uint32 Offer = 103;
+  repeated string Images = 104;
+  repeated Category Category = 105;
+}
+
